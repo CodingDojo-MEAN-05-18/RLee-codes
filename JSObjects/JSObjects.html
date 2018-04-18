@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Objects</title>
+</head>
+<body>
+    <h1>JS Objects</h1>    
+     <h3>Check console for Challenge 1 and 2 outputs</h3>
+
+<!-- Challenge 1 -->
+    <script>
+        let students = [
+        {name: 'Remy', cohort: 'Jan'},
+        {name: 'Genevieve', cohort: 'March'},
+        {name: 'Chuck', cohort: 'Jan'},
+        {name: 'Osmund', cohort: 'June'},
+        {name: 'Nikki', cohort: 'June'},
+        {name: 'Boris', cohort: 'June'}
+        ];
+
+    //build function to list student names and cohorts
+        function list_students(students){
+        //loop through students array
+            for (let pupil in students){
+            //collect object data
+                let name = "Name: " + students[pupil].name
+                let cohort = "Cohort: " + students[pupil].cohort
+            //return formatted string
+                console.log(name+", "+cohort)
+            }
+        };
+        console.log("Challenge 1");
+    //call listing function
+       list_students(students);
+    
+    </script>   
+
+
+<!-- Challenge 2 -->
+    <script>
+        let users = {
+        employees: [
+            {'first_name':  'Miguel', 'last_name' : 'Jones'},
+            {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+            {'first_name' : 'Nora', 'last_name' : 'Lu'},
+            {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+        ],
+        managers: [
+        {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+        {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+        ]
+        };
+
+    //build function to list users according to format
+        function list_users(users){
+            for(let group in users){
+                console.log(group.toUpperCase());
+                // console.log(users[group]);
+                //build list indices
+                let index = 1;
+                for(let indiv in users[group]){
+                //collect user name data & format names to uppercase for logging with required format
+                    let fname = (users[group][indiv].first_name).toUpperCase();
+                    let lname = (users[group][indiv].last_name).toUpperCase();
+                //calculate user combined name length
+                    let namlen = (fname + lname).length;
+                //build output string
+                    let output = (index+" - "+lname+", "+fname+" - "+namlen)
+                    console.log(output);
+                    index++
+                }
+            }
+        };
+        console.log("Challenge 2");
+    //call listing function
+        list_users(users);
+    </script>   
+</body>
+</html>

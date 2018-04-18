@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS DOM I</title>
+</head>
+<body>
+    <h1>Students</h1>   
+    <ul id="main">
+        <!-- this is empty -->
+    </ul>
+    <script>
+        function appendList(array, id){
+            for (let i = 0; i < array.length; i++){
+                let student = document.createElement("li");
+                student.innerHTML = array[i];
+                document.getElementById(id).appendChild(student);
+            };
+        };
+        let students = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+        let target_id = "main";
+        appendList(students, target_id);
+    </script>
+
+    <h1>Ninjas</h1>
+    <h4>(Bonus Feature)</h4>
+    <ul id="bonus">
+        <!-- this one is empty too -->
+    </ul>
+    <script>
+        function superAppend(array, element, id){
+            for (let y = 0; y < array.length; y++){
+                let ninja = document.createElement(element);
+                ninja.innerHTML = array[y];
+                document.getElementById(target).appendChild(ninja);
+            };
+        };
+        let ninjas = ["Cindy","Shannon","Ray","Barrett","Jae","Isabelle"];
+        let type = "h3";
+        let target="bonus";
+        superAppend(ninjas, type, target_id );
+    </script>
+
+</body>
+</html>

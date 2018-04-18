@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Template</title>
+</head>
+<body>
+    <h1>JS Intermediate</h1>    
+    <h3>stars and letters printed by the functions of this assignment will be visible in the console when both log lines and test cases are uncommented in the code.</h3>
+
+    <script>
+    // Part I
+    // Create a function called starString() that takes a number and returns a string of that many *. For example:
+        function starString(x){
+            let stars = "";
+            for (let i = 0; i <= x; i++){
+                stars += "*";
+            }          
+//            console.log(stars);
+            return stars;
+        }
+    // Test Cases
+    // a. returns a string of 7 stars
+//        starString(7)
+    // b. returns a string of 9 stars
+//        starString(9)
+
+
+    // Part II
+    // Create a function called drawStars() that takes an array of numbers and prints out *.
+        // function drawStars(arr){
+        //     for (let y = 0; y < arr.length; y++){
+        //         let stars = "";
+        //         for (let i = 0; i < arr[y]; i++ ){
+        //             stars += "*";
+        //         }
+        //         console.log(stars);
+        //     }
+        // }
+    // Test Cases
+    // a. returns strings of 3, 1, and 4, stars
+//        let arr = [3, 1, 4,];
+//        drawStars(arr)
+    // b. returns strings of 1, 2, 3, 4, and 5 stars
+//        let arr2 = [1,2,3,4,5];
+//        drawStars(arr2)
+
+
+// Part III
+// Modify the function above. Allow an array containing integers and strings to be passed to the drawStars() function. 
+// When a string is passed, instead of displaying *, display the first letter of the string according to the example below. 
+// You may use the .toLowerCase() string method for this part.
+        function drawStars(arr){
+            for (let y = 0; y < arr.length; y++){
+                let stars = "";
+                // handle array items that are numbers
+                if (typeof arr[y] == "number"){
+                    for (let i = 0; i < arr[y]; i++ ){
+                        stars += "*";
+                    }
+                // handle array items that are strings
+                }else if(typeof arr[y] == "string"){
+                    let word = arr[y].toLowerCase();
+                    let letter = word.split('')[0];
+                    for (let z = 0; z < arr[y].length; z++){
+                        stars += letter;
+                    }
+                }
+                //  log the result of the nested loop
+                console.log(stars);
+            }
+        }
+        
+    // Test Case
+    // a. returns strings of 3, 1, and 4 stars, punctuated by strings of rrr, i, and wwww
+        let arr = [3, "Ray", 1, "I", 4, "will"]
+        drawStars(arr)
+
+    
+    </script>   
+
+</body>
+</html>

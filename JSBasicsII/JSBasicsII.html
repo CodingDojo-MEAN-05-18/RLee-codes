@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Template</title>
+</head>
+<body>
+    <h1>JS Basics II</h1>
+    TEST1 expectation: returns 10<div id="test1"></div>
+    <br>
+    TEST2 expectation: returns "All inputs 0"<div id="test2"></div>
+    <br>
+    TEST3 expectation: returns [2,4,6] <div id="test3"></div>
+    <br>
+    TEST4 expectation: returns "Cannot multiply by a string"<div id="test4"></div>
+    <br>
+    TEST5 expectation: returns "BrendoBrendoBrendoBrendo"<div id="test5"></div>
+    
+
+    <!-- REQUIREMENTS   -->
+    <!-- build and modify the function such that all test cases pass -->
+
+    <script>
+        function magic_multiply(x, y){
+
+            if (x === 0 && y === 0){
+                let output = "All inputs 0";
+                return output;
+            }else if(x.constructor === Array){
+                for (let i = 0; i < x.length; i++){
+                    x[i]*=2;
+                }
+                let output = x;
+                return output;
+            }else if (typeof x == "number" && typeof y == "string"){
+                let output = "Cannot multiply by a string.";
+                return output;
+            }else if (typeof x == "string" && typeof y == "number"){
+                let i = 0;
+                let output = "";
+                while ( i < y ){
+                    output += x;
+                    i++;
+                }
+                return output;
+            }else{ let output = x * y;
+                return output;
+            }
+        }
+        
+        
+    // TEST1 expectation: returns 10
+    // define test case and call function
+        let test1 = magic_multiply(5,2);
+    //build result into DOM for easier, static viewing
+        document.getElementById("test1").innerHTML = test1;
+    //log result to satisfy assignment requirements
+        console.log(test1);
+        
+        
+    //TEST2 expectation: returns "All inputs 0"
+    // define test case and call function
+        let test2 = magic_multiply(0,0);
+        document.getElementById("test2").innerHTML = test2;
+        console.log(test2);
+        
+    //TEST3 expectation: returns [2,4,6]  
+    // define test case and call function
+        let test3 = magic_multiply([1,2,3],2);
+        document.getElementById("test3").innerHTML = test3;
+        console.log(test3);
+        
+        
+    //TEST4 expectation: returns "Cannot multiply by a string"  
+    // define test case and call function        
+        let test4 = magic_multiply(7, "three");
+        document.getElementById("test4").innerHTML = test4;
+        console.log(test4);
+        
+
+    //TEST5 expectation: returns "BrendoBrendoBrendoBrendo"  
+    // define test case and call function        
+        let test5 = magic_multiply("Brendo", 4);
+        document.getElementById("test5").innerHTML = test5;
+        console.log(test5);
+
+    </script>
+</body>
+</html>
