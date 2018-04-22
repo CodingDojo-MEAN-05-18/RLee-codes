@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deck of Cards</title>
+</head>
+<body>
+    <h1>Deck of Cards</h1>    
+     <script>
+        class Card{
+            constructor (value, suit, position){
+            //set card's initial position in the deck
+                this.position = position
+            //set suit properties for the card
+                if (suit == "s"){
+                    this.tag = suit;
+                    this.suit = "Spades";
+                }else if ( suit == "d" ){
+                    this.tag = suit;
+                    this.suit = "Diamonds";
+                }else if ( suit == "c"){
+                    this.tag = suit;
+                    this.suit = "Clubs";
+                }else if ( suit == "h"){
+                    this.tag = suit;
+                    this.suit = "Hearts";
+                }
+            //set value properties for the card
+                this.val = value;
+                let valArray = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
+                this.value = valArray[value-1];
+            //set name properties for the card
+                this.name = `${this.value} of ${this.suit}`;
+            //set card images front and back
+                this.back = "images/b2fv.png";
+                this.front = `images/${this.tag}${this.val}.png`;
+            }
+        }
+
+
+        class Deck{
+            constructor(){
+                // The Deck should contain the 52 standard cards
+                //declare empty cards array;
+                this.cards = [];
+                
+                //set suit and values arrays
+                let suits = ["s", "d", "c", "h"];
+                let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+                
+                //loop through suits and values to create card instances
+                let i = 0;
+                for (let suit in suits){
+                    for ( let val in values){
+                        this.cards[i] = new Card(values[val], suits[suit], i);
+                        i++;
+                    }
+                }
+
+                // The Deck should be able to deal a random card
+                // Deal should return the card that was dealt and remove it from the deck
+                this.deal = function(player){
+                    if ( player instanceof Player == true){
+                        let depth = this.cards.length-1;
+                        let i = Math.round(Math.random()*depth);
+                        // console.log(i);
+                        let dealt = this.cards.splice(i, 1);
+                        player.hand.push(dealt[0]);
+                        console.log(dealt[0]);
+                        return(dealt);
+                    }else{
+                        return("To deal, one must target a Player.  Please check your input type.");
+                    }
+                };
+
+                // The Deck should be able to shuffle
+                this.shuffle = function(){
+                    let newOrder = [];
+                    if(this.cards.length <= 2){
+                        return("The deck is too small. Use reset instead");
+                    }else{
+                        while(this.cards.length > 0){
+                            let random = Math.round(Math.random()*(this.cards.length - 1));
+                            newOrder.push(this.cards.splice(random, 1));
+                        }
+                    }
+                    this.cards = newOrder;
+                    console.log("The deck is shuffled");
+                    return(this);
+                };
+
+                // The Deck should be able to reset
+                this.reset = function(){
+                    //dempty the cards array;
+                    this.cards.length = 0;
+                    
+                    //set suit and values arrays
+                    let suits = ["s", "d", "c", "h"];
+                    let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+                    
+                    //loop through suits and values to create card instances
+                    let i = 0;
+                    for (let suit in suits){
+                        for ( let val in values){
+                            this.cards[i] = new Card(values[val], suits[suit], i);
+                            i++;
+                        }
+                    }
+                    console.log("The deck has been refreshed. There may be duplicate cards if players had cards in hand when this was executed.  If you do not desire this, then have all players discard all cards and reset the deck again.")
+                    return(this);
+                };
+            }
+        }
+
+
+        class Player{
+            constructor(name){
+                //set player properties
+                //The Player should have a name
+                this.name = name;
+                // The Player should have a hand
+                this.hand = [];
+
+                // The Player should be able to take a card (use the deck.deal method)
+                this.takeCard = function(deck){
+                    if (deck instanceof Deck == false){
+                        console.log("Cheater.  One may only deal from a legit deck.  Please check your input type.");
+                        return ("Cheater.  One may only deal from a legit deck.  Please check your input type.");
+                    }else{
+                        deck.deal(this);
+                    }
+                };
+            
+                // The Player should be able to discard a card
+                this.discard = function(deck , cardName){
+                    //discards will be made to the bottom of the deck
+                    //check that discard goes to deck instance
+                    if(deck instanceof Deck == false){
+                        console.log("One may only discard to the bottom of an acutal deck. Adjust your input please.");
+                        return("One may only discard to the bottom of an actual deck.  Adjust your input please.");
+                    }else{
+                        let valid = false;
+                        //check if cardName discarded is actually in player's hand.
+                        for( let i = 0; i < this.hand.length; i++){
+                            if(cardName === this.hand[i].card.name){
+                                deck.cards.push(this.hand.splice(i, 1));
+                                valid = true;
+                                console.log(`Successfully discarded ${cardName}`);
+                                return(this)
+                            }
+                        }
+                        if (valid = false){
+                            console.log("That card is not in this player's hand. Are you certain you spelled it's name correctly. (eg 'Ace of Spades' or 'Jack of Clubs'.)")
+                            return("That card is not in this player's hand. Are you certain you spelled it's name correctly. (eg 'Ace of Spades' or 'Jack of Clubs'.)")
+                        }
+                        
+                    }
+                };
+            }
+        }
+
+        const deck1 = new Deck();
+        const player1 = new Player("Shark");
+
+
+
+
+
+        //		REMOVED FROM DECK CONSTRUCTOR AND APPENDED TO THE END OF THE FILE SO THAT I MAY RETURN TO IT AT A LATER TIME
+        // 		//This shuffle was designed to mimic a human shuffle.  
+        // 		//Ultimately I scrapped it in favor of a simpler mathematical shuffle which does not imitate the human method.
+        // 		this.shuffle = function(){
+        // 			//do not allow the shuffling of an empty deck or deck of 1
+        // 			if ( this.cards.length === 0 || this.cards.length == 1 ){
+        // 				console.log("The deck is too small.  Reset instead.")
+        // 				return(this);
+        // 			}else{
+        // 			//split the deck into 2 piles
+        // 				let half = Math.round((this.cards.length)/2);
+        // 				// let otherHalf = (this.cards.length - half);
+        // 				let old = this.cards;
+        // 				let halfCards = [];
+        // 				for (let i = 0; i < half; i++){
+        // 					halfCards.push(old.splice(0,1));
+        // 				}
+        // 				let otherHalfCards = old;
+        // 				this.cards.length = 0;
+        // 			//recombine the piles by 1, 2 or 3 card blocks via helper functions
+        // 				this.half(true, halfCards, otherHalfCards, this.other);
+        // 			}
+        // 		};
+        // 		//shuffling helper function 1 of 2
+        // 		this.half = function(some, halfCards, otherHalfCards, callback){
+        // 		//set indication that here are more cards in halfCards
+        // 			let more = true;
+        // 		//handle loop through halfCards
+        // 			if (halfCards.length > 0 && halfCards.length <= 3){
+        // 				var random = halfCards.length;
+        // 				more = false;
+        // 			}else{var random = Math.round(Math.random()*2);}
+        // 		//stack random  1 to 3 cards from halfCards onto shuffled deck
+        // 			for (let i = 0; i <= random; i++ ){
+        // 				this.cards.push(halfCards.splice(0,1));
+        // 			}
+        // 		//if otherHalfCards still has cards call this.other
+        // 			if (some == true){
+        // 				this.other(more, halfCards, otherHalfCards, this.half);
+        // 		//handle cases of otherHaldCards being empty while halfCards is not
+        // 			}else if(some == false && more ==true){
+        // 				this.half(some, halfCards, otherHalfCards, this.other);
+        // 		//handle end case of shuffling
+        // 			}else if(some == false && more === false){
+        // 				console.log("The deck is shuffled. v1");
+        // 				return(this.cards);
+        // 			}
+                    
+        // 		};
+        // 		//shuffling helper function 2 of 2
+        // 		this.other = function(more, halfCards, otherHalfCards, callback){
+        // 		//set indication that there are some cards in otherHaldCards
+        // 			let some = true;
+        // 		//handle loop through otherHaldCards
+        // 			if (otherHalfCards.length <=3){
+        // 				let random = otherHalfCards.length;
+        // 				some = false;
+        // 			}
+        // 		//stack random 1 to 3 cards from otherHalfCards onto shuffled deck
+        // 			let random = Math.round(Math.random()*2);
+        // 			for (let i = 0; i <= random; i++ ){
+        // 				this.cards.push(otherHalfCards.splice(0,1));
+        // 			}
+        // 		//if halfCards has cards, call this.half
+        // 			if ( more == true){
+        // 				this.half(some, halfCards, otherHalfCards, this.other);
+        // 		// handle cases of halfCards being empty while otherHalfCards is not
+        // 			}else if (more == false && some == true){
+        // 				this.other(more, halfCards, otherHalfCards, this.half);
+        // 		// handle end case of shuffling
+        // 			}else if (more == false && some == false){
+        // 				console.log("The deck is shuffled! v2")
+        // 				return(this);
+        // 			}
+                            
+        // 		};
+        // 	}
+        // }
+    </script>   
+    <!-- <div id="deck">
+        <img src="images/c4.png">
+    </div>
+  -->
+</body>
+</html>
