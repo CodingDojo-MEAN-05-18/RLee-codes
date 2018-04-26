@@ -1,0 +1,1 @@
+This is a simple container folder for Node Projects
