@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: black;
+    margin: auto;
+}
+#wrapper{
+    background-color: darkblue;
+    width: 980px;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+    border: solid 1px red;
+    color: white;
+}
+form{
+    border: solid 1px red;
+    border-radius: 5px;
+}
+input{
+    margin: 10px;
+    padding: 5px;
+    border: solid 1px red;
+    border-radius: 5px;
+}
+a{
+    color: red;
+}
+.image{
+    width: 450px;
+    border: 3px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+.pic{
+    width: 100%;
+}
