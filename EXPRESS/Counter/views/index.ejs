@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link  rel="stylesheet" type="text/css" href="/style.css">
+    <title>Counter</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Counter</h1>
+        <h3>Current Value:</h3>
+        <p id="big"><%= req.session.counter %></p>
+        <form action="/plus2" method="GET">
+            <input type="submit" class="bttn" value="+2">
+        </form>
+        <form action="/reset" method="GET">
+            <input type="submit" class="bttn" value="Reset">
+        </form>
+    </div>
+</body>
+</html>
