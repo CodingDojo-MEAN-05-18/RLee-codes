@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Cars and Cats</title>
+</head>
+
+<!-- Have '/cats' show your pictures of cats. -->
+
+<body>
+    <div id="wrapper">
+    <center>
+        <!-- show the cat info! -->
+        <div>
+            <h1>Info for <%= cat.name %></h1>
+            <div class="redOutline">
+                <h3>Age: <%= cat.age %> </h3>
+            </div>
+            <div class="redOutline">
+                <h3>Color: <%= cat.color %> </h3>
+            </div>
+            <div class="redOutline">
+                <h3>Favorite places to sleep: </h3>
+                    <% for (var spot in cat.spots){ %>
+                    <h4><%= cat.spots[spot] %></h4>
+                    <% } %>
+                    
+                
+                
+            </div>  
+        </div>
+
+        
+        
+        <div>
+            <center>
+            <!-- some simple navigational controls -->
+                <h3>What would you like to go look at next?</h3>
+                <a href="/cars/new">
+                    <h2>New Car Form</h2>
+                </a>
+                <a href="/cars">
+                    <h2>CARS!</h2>
+                </a>
+                <a href="/cats">
+                    <h2>CATS!</h2>
+                </a>
+            </center>
+        </div>
+
+    </center>
+    </div>
+</body>
+</html>
