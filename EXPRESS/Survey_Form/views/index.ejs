@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css" >
+    <title>Survey Form</title>
+</head>
+<body>
+    <div id="wrapper">
+        <form action="/process" method="POST">
+            <legend>Enter Your Data</legend>
+            <label for='name'>Your Name</label>
+            <input type="text" name='uname' class='inpt' id="name">
+            <br>
+            <label for="location">Location:</label>
+            <select name="location" class='inpt' id='location'>
+                <option value="Mountain View">Mountain View</option>
+                <option value="Silicon Valley">Silicon Valley</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Online Everywhere">Online Everywhere</option>
+            </select>
+            <br>
+            <label for='language'>Favorite Language</label>
+            <select name="language" id='language'>
+                <option value="Javascript">Javascript</option>
+                <option value="Python">NODE</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+            </select>
+            <br>
+            <label for='comment'>Comment</label>
+            <input type='textarea' rows='4' name="comment" class="cmnt" id='comment'>
+            <br>
+            <input type="submit" value="Submit" class="bttn">
+        </form>
+    </div>
+</body>
+</html>
