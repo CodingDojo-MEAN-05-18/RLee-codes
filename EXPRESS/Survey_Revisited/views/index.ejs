@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+1. server displays index.ejs containing the form
+2. user form submission triggers form data to be emitted to servers
+3. server listens for "submission" event & responds with emission of form data to client
+4. "submission" event also triggers the server to generate and emit to client a random number (1-1000)
+5. data emitted from server to user is displayed in the document 
+-->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css" >
+
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+        
+        const socket = io.connect();
+        
+        // confirm socket connection in console
+        socket.on('connected', function (data){
+            console.log(data.msg);
+        });        
+        
+        // 2. user form submission triggers form data to be emitted to servers
+        // catch form submission, collect submitted data, emmit event to server
+        $('form').submit(function(form){
+            form.preventDefault();
+            
+            const formInfo = {
+                name: $('#name').val(),
+                location: $('#location').val(),
+                language: $('#language').val(),
+                comment: $('comment').val()
+            }
+            console.log('I heard you');
+            socket.emit("submission", formInfo);
+        });
+        
+        //5. data emitted from server to user is displayed in the document 
+        socket.on('number', function(data){
+            $('#number').html("The lucky number granted to you by the server is: " + (data.number));
+            console.log('number received');
+        });
+        socket.on('dataSent', function(data){
+            $('#dataSent').html("Someone submitted a form with the following data: " + JSON.stringify(data.data));
+        });
+
+
+
+
+    });
+
+</script>
+
+
+
+
+    <title>Survey Form</title>
+</head>
+
+
+<body>
+    <div id="wrapper">
+
+        <div id="dataSent">
+            <!-- data sent to server will be displayed here -->
+        </div>
+        <div id="number">
+            <!-- lucky number data will show here.  -->
+        </div>
+
+        <form action="/process" method="POST">
+            <legend>Enter Your Data</legend>
+            <label for='name'>Your Name</label>
+            <input type="text" name='uname' class='inpt' id="name">
+            <br>
+            <label for="location">Location:</label>
+            <select name="location" class='inpt' id='location'>
+                <option value="Mountain View">Mountain View</option>
+                <option value="Silicon Valley">Silicon Valley</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Online Everywhere">Online Everywhere</option>
+            </select>
+            <br>
+            <label for='language'>Favorite Language</label>
+            <select name="language" id='language'>
+                <option value="Javascript">Javascript</option>
+                <option value="Python">NODE</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+            </select>
+            <br>
+            <label for='comment'>Comment</label>
+            <input type='textarea' rows='4' name="comment" class="cmnt" id='comment'>
+            <br>
+            <input type="submit" value="Submit" class="bttn">
+        </form>
+    </div>
+</body>
+</html>

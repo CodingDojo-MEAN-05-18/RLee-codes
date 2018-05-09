@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css" >
+    <title>Survey Form</title>
+</head>
+<body>
+    <div id="wrapper">
+       <div id='result'>
+           
+            <div class="poster">
+              <p class="big">Name:</p>
+              <p class="big">Dojo Location:</p>
+              <p class="big">Favorite Language:</p>
+              <p class="big">Comment:</p>
+            </div>
+            <div class="poster">
+                <p class="big green"><%= data.uname %></p>
+                <p class="big green"><%= data.location %></p>
+                <p class="big green"><%= data.language %></p>
+                <p class="big green"><%= data.comment %></p>
+            </div>
+       </div>
+    </div>
+</body>
+</html>
