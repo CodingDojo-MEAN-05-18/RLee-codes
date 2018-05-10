@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<!-- 1. Server loads index.ejs & updates "newly_connected" user's "#wrapper" background color to the last
+    selected color. -->
+<!-- 2. Clicking one of the three color buttons emits a "colorChosen" event to the server along with the
+    selected color's value. -->
+<!-- 3. "colorChosen" event triggers an io.emit, "selection" which conveys the current color selection to
+    all connected users. -->
+<!-- 4. "selection" event triggers the update of the "#wrapper"'s background color to the selected color. -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js'></script>
+
+    <script>
+    
+    $(document).ready(function(){
+        
+        var socket = io.connect();
+        // 1. Server loads index.ejs & updates "newly_connected" user's "#wrapper" background color to the last
+        // selected color.
+        // receive current wrapper background color from server & adjust color accordingly
+        socket.on("newly_Connected", function(data){
+            $("#wrapper").attr("class", data.color);
+            console.log("Connected and color updated.")
+        });
+
+
+        // send blue selection to server
+        $("#blue").click(function(){
+            console.log("you clicked blue");
+            var color = { color: "blue"};
+            socket.emit("colorChosen", color);
+        });
+
+        // send green selection to server
+        $("#green").click(function(){
+            console.log("you clicked green");
+            var color = { color: "green"};
+            socket.emit("colorChosen", color);
+        });
+        
+        //send red selection to server
+        $("#red").click(function(){
+            console.log("you clicked red");
+            var color = { color: "red"};
+            socket.emit("colorChosen", color);
+        });
+        
+        // 4. "selection" event triggers the update of the "#wrapper"'s background color to the selected color.
+        //receive color selection from server and change wrapper's class to accordingly
+        socket.on("selection", function(data){
+            $("#wrapper").attr("class", data.color);
+            // console.log(`Someone clicked ${data.color}`);
+        });
+
+    });
+    
+    </script>
+    <title>Real-Time Colors</title>
+</head>
+<body>
+    <div id="wrapper" class="color">
+
+        <center>
+            <h1 class="white">Real-Time Colors</h1>
+        </center>
+        <button class="btn blue" id="blue">Blue</button>
+        <button class="btn green" id="green">Green</button>
+        <button class="btn red" id="red">Red</button>
+
+    </div>
+</body>
+</html>
