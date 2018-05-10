@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: darkblue;
+    width: 900px;
+    border: solid 1px white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+#wrapper{
+    width: 735px;
+    background-color: black;
+    color: red;
+    font-weight: bold;
+    margin: inherit;
+    border: solid 1px lime;
+}
+.green{
+    color: lime;
+}
+#epic{
+    font-weight: bold;
+}
+#count{
+    font-size: 1.5em;
+}

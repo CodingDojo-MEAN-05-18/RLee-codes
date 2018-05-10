@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' integrity='sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB' crossorigin='anonymous'>
+    <link rel='stylesheet' type="text/css" href="style.css">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js'></script>
+
+    <title>Epic Button Game</title>
+
+    <script>
+        $(document).ready(function(){
+            var socket = io.connect();
+            
+
+            // catch the epic button click and emit event to server
+            $('#epic').click(function(){
+                socket.emit('buttonClick');
+            });
+            
+            $("#reset").click(function(){
+                socket.emit('reset');
+            })
+
+            // listen for incremented event from server & update number displayed
+            socket.on("incremented", function(number){
+                $('#count').text(number);
+            });
+
+            //listen for 'zeroed; event from server & update number displayed
+            socket.on("zeroed", function(number){
+                $("#count").text(number);
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <center>
+            <h1>The Epic Button Game</h1>
+            
+            <div>
+                <p class="green">Push the Button to Join the Game!</p>
+                <button class="btn btn-primary" id="epic">The Epic Button</button>
+            </div>
+            <h3>The button has been pressed <span class="green" id="count"> 0 </span> times.</h3>
+        </center>
+        <button class="btn btn-warning pull-right" id="reset">Reset</button>
+    </div>
+</body>
+</html>
