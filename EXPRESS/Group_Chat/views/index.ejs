@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <title>Group Chat</title>
+
+    <script>
+
+
+        $(document).ready(function(){
+        
+            var socket = io.connect();
+            
+            // on login a client is prompted to enter their name
+            var name = prompt("What would you like your name to be?");
+            //disallow blank name entry
+                if (name == false){
+                    location.reload(true);
+                }
+            console.log(name);
+
+            //name entry triggers "named_entry" event to server with name data
+            socket.emit('named_entry', name);
+
+            //receive duplicate name event "duplicate" and alert user to choose new name.  Trigger page reload.
+            socket.on("duplicate", function(name){
+                console.log(name);
+                alert(name + " is already in use.  Please choose another.")
+                location.reload(true);
+            });
+            
+            var myData = {};
+            //receive session_id and existing chat log from server with "catching_up" event.
+            socket.on("catching_up", function(info){
+                const number = info.number;
+                myData = {[number] : name};
+                var chat_log = info.chats;
+                for (each in chat_log){
+                    message = `<p><span class="bold white">${chat_log[each].from}: </span><span class="${chat_log[each].color}">${chat_log[each].text}</span></p>`;
+                    $("#chatbox").append(message + "<br>");
+                }
+                // console.log(chat_log);
+            });
+
+            $('form').submit(function(form){
+                form.preventDefault();
+                var color = $("#colorPick").val();
+                var message = $("#chat_entry").val();
+                if (message == ""){
+                    alert("Sending blank messages is trollish. Stop it.");
+                }else{
+                    var message_data = {
+                        text : message,
+                        color : color,
+                        from : name,
+                        id : Object.keys(myData)[0]
+                    }
+                    $("#chat_entry").val("");
+                    socket.emit("message_posted", message_data);
+                }
+                // console.log(name, color, message);
+                // console.log(color);
+            });
+
+            socket.on("updated_chat_log", function(chat_log){
+                var recent = chat_log[chat_log.length-1];
+                message = `<p><span class="bold white">${recent.from}: </span><span class="${recent.color}">${recent.text}</span></p>`;
+                $("#chatbox").append(message + "<br>");
+                console.log(message);
+            });
+
+            
+        });
+        
+     
+
+    </script>
+
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div id="chatbox"></div>
+        <div class="form_holder">
+            <form action="" id="chat_form">
+                <input type="text" id="chat_entry" class="input chat_field" name="chat_message" placeholder="enter your message here" >
+                <br>
+                <select name="color" class="input" id="colorPick">
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">Purple</option>
+                    <option value="orange">Orange</option>
+                    <option value="white">White</option>
+                </select>
+                <input type="submit" name="Sender" value="Send" class="bttn input">
+            </form>
+        </div>
+        <!-- was going to add a button to reset the session here, but it is not required and time is of the essence -->
+        <!-- <button class="input bttn" id="reset">Master Reset</button>
+        <p>You will be hated for pushing this button!</p> -->
+    </div>
+
+</body>
+</html>
