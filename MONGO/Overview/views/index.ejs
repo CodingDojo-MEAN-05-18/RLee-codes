@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js'></script>
+    <title>Basic Index</title>
+
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Let's add a User</h1>
+        <form action="/users" id="basic" method="POST">
+        
+            <input type="text" class="inpt" name="name" placeholder="Enter Name here">
+            <input type="number" class="inpt" name="age" placeholder="Enter Age here">
+            <button type="submit" class="bttn">Submit User Data</button>    
+
+        </form>
+
+        <div id="data">
+            <!-- users data will fill in here. -->
+
+            <% for (var x in users) { %>
+                <h3>Name: <%= users[x].name %></h3>
+                <h4>Age: <%= users[x].age%></h4>
+            <% } %>
+        
+        </div>
+    </div>
+</body>
+</html>
