@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Otter Dashboard</title>
+
+    <script>
+    $(document).ready(function(){
+        
+        $("#all").click(function(){
+            window.location.href="/";
+            return false;
+        });
+
+        $("edit").click(function(){
+            window.location.href="/otters/edit/{{ otter.id }}";
+            return false;
+        });
+
+    });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <center>
+        <h1>All the details about </h1>
+        </center>
+        <div id="family">
+            <img src="/images/<%- num %>.jpg" class="image">
+        </div>
+
+        <center>
+            <div class="detile">
+                <h1>Otter Name: <span class="data"><%= otter.name %></span></h1>
+                <h3>id number: <span class="data"><%= otter.id %></span> </h3>      
+                <p>Favorite Food: <span class="data"><%= otter.food %></span></p>
+                <p>Favorite Game: <span class="data"><%= otter.game %></span></p>
+                <p>Favorite Family Member: <span class="data"><%= otter.member %></span></p>
+                <p>Interests: <span class="data"><%= otter.interests %></span></p>
+                
+            </div>
+        </center>
+
+        <div id="navigations">
+            <center>
+                <button class="bttn" id="all">All Otters</button>
+                <button class="bttn" id="edit" onclick="location.href='/otters/edit/<%- otter.id %>'" >Edit Otter</button>
+                
+                <form action="/otters/destroy/<%- otter.id %>" method="POST">
+                    <input type="submit" class="bttn" id="oust" value="Oust Otter">
+                </form>
+            </center>
+        </div>
+
+    </div>
+</body>
+</html>

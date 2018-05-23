@@ -1,0 +1,94 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    width: 900px;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: cornflowerblue;
+}
+#wrapper{
+    border: solid 2px white;
+    border-radius: 20px;
+    background-color: black;
+    color: lightgreen;
+    width: 735px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+#family{
+    width: 300px;
+    /* border: solid 1px whitesmoke; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.image{
+    width: 100%;
+    border-radius: 10px;
+}
+#navigations{
+    margin-bottom: 10px;
+}
+.bttn{
+    padding: 5px;
+    border: solid 2px lightgreen;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+.otterForm{
+    border: solid 1px cornflowerblue;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 10px;
+    padding: 10px;
+    text-align: right;
+}
+.inpt{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+#interestLabel{
+    position: relative;
+    bottom: 40px;
+}
+.tile{
+    border: solid 2px cornflowerblue;
+    border-radius: 15px;
+    width: 300px;
+    padding: 10px;
+    margin: 10px 15px 10px 15px;
+    overflow: auto;
+    display: inline-block;
+}
+.detile{
+    border: solid 2px cornflowerblue;
+    border-radius: 15px;
+    width: fit-content;
+    padding: 10px;
+    margin: 10px 15px 10px 15px;
+    overflow: auto;
+    display: inline-block;
+    text-align: left;
+}
+.data{
+    color: white;
+    font-weight: bold;
+}
+.cornblue{
+    color: cornflowerblue;
+}
+.flasher{
+    color: red;
+}
