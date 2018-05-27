@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>Login & Registration</title>
+
+<script>
+
+    $(document).ready(function(){
+    
+        $("#logout").click(function(){
+            window.location.href="/logout";
+        });
+
+    });
+
+</script>
+
+
+
+</head>
+<body>
+    
+<div id="wrapper">
+
+    <h1 class="banner">Welcome <%= user.fname %>, please login below.</h1>
+
+    <h3> I see that your last name is "<%= user.lname %>"</h3>
+
+    <h4> It is recorded that your birthday is <%= moment(user.bday).format('MMMM D, YYYY') %></h4>
+
+    <center>
+        <div class="secondiv">
+            <h3 class="subbanner">Ready to log out?  Click here.</h3>
+            <button class="bttn" id="logout">Log Out</button>
+        </div>
+    </center>
+</div>
+
+</body>
+</html>

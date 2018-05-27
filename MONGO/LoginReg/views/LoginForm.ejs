@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>Login & Registration</title>
+
+<script>
+
+    $(document).ready(function(){
+    
+        $("#regPage").click(function(){
+            window.location.href="/";
+        });
+
+    });
+
+</script>
+
+
+
+</head>
+<body>
+    
+<div id="wrapper">
+
+    <h1 class="banner">Welcome, please login below.</h1>
+
+    <form action="/login" method="POST" class="form">
+
+        <label for="email">Email Address: </label>
+        <input type="text" name="email" class="inpt">
+        <!-- could have used input type='email' here to avoid the need for regex..  -->
+        <br>
+        <label for="cword">Confirm Password: </label>
+        <input type="text" name="cword" class="inpt">
+        <br>
+        <input type="submit" value="Login" class="bttn">
+
+    </form>
+    <center>
+        <div class="flasher">
+            <% if (messages.logIn) {  %>
+                <% for (var e of messages.logIn) { %>
+                    <h3><%= e %></h3>
+                <% } %>
+            <% } %>
+        </div>
+    </center>
+    <center>
+        <div class="secondiv">
+            <h3 class="subbanner">Not a member yet?  Register here.</h3>
+            <button class="bttn" id="regPage">Goto Registrar</button>
+        </div>
+    </center>
+</div>
+
+</body>
+</html>

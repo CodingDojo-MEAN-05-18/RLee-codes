@@ -1,0 +1,36 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: slateblue;
+    width: 900px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px white;
+}
+#wrapper{
+    width: 735px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+.form{
+    width: fit-content;
+    margin: auto;
+    text-align: right;
+}
+.inpt{
+    margin: 5px;
+}
+.secondiv{
+    margin: 10px;
+}
+.flasher{
+    color: red;
+}
