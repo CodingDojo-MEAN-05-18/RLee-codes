@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Login & Registration</title>
+
+<script>
+
+    $(document).ready(function(){
+    
+        $("#logout").click(function(){
+            window.location.href="/logout";
+        });
+        
+    });
+
+</script>
+
+
+
+</head>
+<body>
+    
+<div id="wrapper">
+
+    <h1 class="banner">Comment on this secret: </h1>
+    
+    <center>
+        <h3><%= secret.content %></h3>
+    </center>
+
+    <div class="flasher">
+        <% if (messages.comment) {  %>
+            <% for (var e of messages.comment) { %>
+                <h3><%= e %></h3>
+            <% } %>
+        <% } %>
+    </div>
+
+
+    <fieldset>
+        <legend>Add a New Comment</legend>
+            <form action="/comment/new" method="POST" class="form">
+                <input type="hidden" class="inpt" name="secret" value="<%- secret.id %>">
+                <label for="content">Comment: </label>
+                <input type="text" class="inpt" name="content">
+                <input type="submit" class="bttn" value="Submit">
+            </form>
+    </fieldset>
+
+    <div class="commentbox">
+            <% for (var comment of comments) { %>
+                <div class="comment">
+                    <%= comment.content  %>
+                    <%if ( comment.user.id == userID ) { %>
+                        <a href="/comment/delete/<%- comment._id %>">Delete</a>
+                    <% } %>
+                </div>    
+            <% } %>
+            
+        </div>
+        <center>
+            <div class="secondiv">
+            <a href="/dashboard" id="comment">Dashboard</a>
+            <h3 class="subbanner">Ready to log out?  Click here.</h3>
+            <button class="bttn" id="logout">Log Out</button>
+        </div>
+    </center>
+
+</div>
+
+</body>
+</html>

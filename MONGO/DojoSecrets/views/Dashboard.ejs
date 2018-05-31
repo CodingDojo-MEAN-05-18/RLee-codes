@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>Dojo Secrets Dashboard</title>
+
+<script>
+
+    $(document).ready(function(){
+    
+        $("#logout").click(function(){
+            window.location.href="/logout";
+        });
+        
+    });
+
+</script>
+
+
+
+</head>
+<body>
+    
+<div id="wrapper">
+
+    <h1 class="banner">Welcome <%= user.fname %>.  You may enter a secret below.</h1>
+    <div class="flasher">
+        <% if (messages.makeSecret) {  %>
+            <% for (var e of messages.makeSecret) { %>
+                <h3><%= e %></h3>
+            <% } %>
+        <% } %>
+    </div>
+
+    <center>
+        <div class="secondiv">
+            <h3 class="subbanner">Ready to log out?  Click here.</h3>
+            <button class="bttn" id="logout">Log Out</button>
+        </div>
+    </center>
+
+    <fieldset>
+        <legend>Add a New Secret</legend>
+            <form action="/secrets/new" method="POST" class="form">
+                <label for="secret">Enter your Secret</label>            
+                <input type="text" class="inpt" name="content">
+                <input type="submit" class="inpt" value="Submit">
+        </form>
+    </fieldset>
+
+    <div class="secretbox">
+        <% for (var secret of secrets) { %>
+            <div onclick="location.href='comment/detail/<%- secret._id %>'" class="secret">
+                <h4><%= secret.content %></h4>
+                <!-- <p class="small"> Comments: <%= secret.comments.length %></p> -->
+                
+                <a  id="comment">Comments: <%= secret.comments.length %> </a>
+                 | 
+                <% if (secret.user.id == user._id)  { %>
+                    <a href="/secret/delete/<%- secret._id %>">Delete Secret</a>
+                <% } %>
+
+            </div>    
+        <% } %>
+    </div>
+
+
+</div>
+
+</body>
+</html>

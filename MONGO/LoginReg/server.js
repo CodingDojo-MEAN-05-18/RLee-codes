@@ -61,6 +61,8 @@ const userSchema = new Schema({
 mongoose.model("User", userSchema);
 const User = mongoose.model("User");
 
+//server Setup Above here
+//------------------------------------------------------------------------------------------
 
 ///routes
 // root route to render the index.ejs view with form for registration
@@ -77,6 +79,14 @@ app.post('/users', function(req, res) {
 
     if ( req.body.email == ""){
         console.log("empty email address");
+        req.session.errors.push("Email address must be present.");
+        req.session.valid = false;
+        if (req.session.valid == false){
+            for (var key in req.session.errors){
+                req.flash('createUser', req.session.errors[key]);
+            }
+            console.log("Preliminary Manual validations tripped.");
+            res.redirect("/");
     }else{
     User.findOne({email : req.body.email})
         .then ( user => {
@@ -84,7 +94,7 @@ app.post('/users', function(req, res) {
             req.session.valid = false;
         })
         .catch( error => {
-            console.log("Email address is available.")
+            console.log("Email address is available.");
         });  
     }
 
@@ -190,8 +200,8 @@ app.post('/users', function(req, res) {
                 // call makeUser to add the user to the database
                 makeUser(req.body);
             }
-        
-});
+    }   
+}
 
 // get route to render login page
 app.get('/loginPage', function(req,res){
@@ -254,3 +264,8 @@ app.get("/logout", function(req, res){
     console.log("User has logged out");
     res.redirect('/loginPage');
 });
+
+// registration & login routes above here. 
+//-----------------------------------------------------------------------------------------
+
+

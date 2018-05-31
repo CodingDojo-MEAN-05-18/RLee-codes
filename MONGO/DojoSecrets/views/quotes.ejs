@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+    <script>    
+        $(document).ready(function(){
+           $("#back").click(function(){
+               window.location.href="/";
+               return false;
+           });
+        });
+    </script>
+
+    <title>The Quotes</title>
+
+</head>
+<body>
+    <div id="wrapper">
+        
+        <center>
+            <h1>
+                Here are the awesome quotes!
+            </h1>
+        </center>
+
+        <div id="quoteHolder">
+
+        <!-- some code to display quotes (in quotes), 
+            and the poster along side the post-creation data/time stamp. -->
+            <% for( var each in quotes ) {%>
+                <% let quote = quotes[each] %>
+                <h3 class="quote">"<%= quote.quote %>"</h3>
+                <h3 class="author"><%= quote.name %> at <%= moment(quote.created_at).format('hh:mm a MMMM D, YYYY') %></h3>
+            <% } %>
+
+        </div>
+        <center>
+            <button class="bttn" id="back">Back</button>
+        </center>
+    </div>
+</body>
+</html>
