@@ -32,8 +32,15 @@
             and the poster along side the post-creation data/time stamp. -->
             <% for( var each in quotes ) {%>
                 <% let quote = quotes[each] %>
-                <h3 class="quote">"<%= quote.quote %>"</h3>
-                <h3 class="author"><%= quote.name %> at <%= moment(quote.created_at).format('hh:mm a MMMM D, YYYY') %></h3>
+                    <div class="quoteBox">
+                    <h3 class="quote">"<%= quote.quote %>"</h3>
+                    <h3 class="author"><%= quote.name %> at <%= moment(quote.created_at).format('hh:mm a MMMM D, YYYY') %></h3>
+                    <center>
+                        <form action="/clearQuote/<%- quote.id %>" method="POST">
+                            <input type="submit" value="Delete" class="bttn">
+                        </form>
+                    </center>
+                </div>
             <% } %>
 
         </div>
