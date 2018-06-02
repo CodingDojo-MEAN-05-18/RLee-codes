@@ -1,0 +1,55 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+}
+#wrapper{
+    background-color: darkblue;
+    padding: 30px;
+    width: 735px;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+    border: solid 3px red;
+    border-radius: 30px;
+    
+}
+.inpt{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+.bttn{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: solid 1px red;
+
+}
+#flasher{
+    text-align: center;
+    color: gold;
+}
+#quoteHolder{
+    width: 550px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.quote{
+    color: gray;
+}
+.author{
+    text-align: right;
+}
