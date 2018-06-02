@@ -299,7 +299,7 @@ app.get("/dashboard", function(req, res){
             Secret.find({}).sort({created_at: -1})
                 .populate("user")
                 .then( secrets => {
-                    console.log(secrets);
+                    // console.log(secrets);
                     res.render("Dashboard", {user : user, moment : moment, secrets});
                 })
                 .catch( error => {
@@ -380,9 +380,9 @@ app.get("/comment/detail/:id", function(req, res){
             .populate("user")
             .then( comments =>{
                 console.log("Comments page reached");
-                console.log(comments);
+                // console.log(comments);
                 var userID = req.session.userID;
-                console.log(userID);
+                // console.log(userID);
                 res.render("Comments", { secret, comments, userID });
             })
             .catch( error =>{
@@ -422,9 +422,10 @@ app.post("/comment/new", function(req, res){
                         console.log("secret", secret);
                         secret.comments.push(comment);
                         return secret.save()
-                            .then( () => response.redirect(`/comment/detail/${req.body.secret}`));
-
-                    });
+                            .then( () => response.redirect(`/comment/detail/${req.body.secret}`))
+                            .catch( () => console.log() );
+                    })
+                    .catch( () => console.log() );
             })
             .catch(error =>{
                 console.log("There was a problem saving the comment");
