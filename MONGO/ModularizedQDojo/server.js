@@ -12,7 +12,7 @@ var path = require('path');
 //mongoose module
 var mongoose = require('mongoose');
 
-require('./server/config/database');
+require('./server/config/mongoose');
 
 //collection => quotes
 const Quote = mongoose.model("Quote");
