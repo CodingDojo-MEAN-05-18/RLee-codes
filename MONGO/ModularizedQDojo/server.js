@@ -9,26 +9,12 @@ const server = app.listen(port, () => console.log(`listening on port ${port}`));
 // path module
 var path = require('path');
 
-
-
 //mongoose module
 var mongoose = require('mongoose');
-//connect mongoose to mongoDB
-mongoose.connect('mongodb://localhost/Quotes');
-mongoose.connection.on("connected", () => console.log("connected to MongoDB"));
 
-//use native promises
-mongoose.Promise = global.Promise;
-
-const { Schema } = mongoose;
-const quoteSchema = new Schema({
-    name: {type: String, required: true, minlength: 3},
-    quote: {type: String, required: true, minlength: 4},
-    created_at: Date, 
-});
+require('./server/config/database');
 
 //collection => quotes
-mongoose.model("Quote", quoteSchema);
 const Quote = mongoose.model("Quote");
 
 //setup flash for error messages
