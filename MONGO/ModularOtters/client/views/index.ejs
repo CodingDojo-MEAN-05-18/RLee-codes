@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Otter Dashboard</title>
+
+    <script>
+    $(document).ready(function(){
+        
+        $("#add").click(function(){
+            window.location.href="otters/new";
+            return false;
+        });
+
+    });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+
+        <center>
+        <h1>The Otter Family Dashboard</h1>
+        </center>
+
+        <div id="family">
+            <img src="/images/otter_family.jpg" class="image">
+        </div>
+
+        <!-- these will be dynamicaly generated & contain info about each otter in the family -->
+        <% for (var each in otters) { %>
+            <% let otter = otters[each] %>
+                <div class="tile" onclick="location.href='/otters/<%- otter.id %>'">
+                    <h3>Otter Name: <span class="data"><%= otter.name %></span></h3>
+                    <h4>individual id number: <span class="data"><%= otter.id %></span> </h4>
+                    <center>
+                        <p class="cornblue">(click for details)</p>
+                    </center>
+                </div>
+        <% } %>
+
+        
+        <div id="navigations">
+            <center>
+                <button class="bttn" id="add">Add Otter</button>
+            </center>
+        </div>
+
+    </div>
+</body>
+</html>

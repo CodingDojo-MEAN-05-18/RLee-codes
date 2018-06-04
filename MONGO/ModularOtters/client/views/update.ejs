@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Otter Dashboard</title>
+
+    <script>
+        $(document).ready(function(){
+            
+            $("#all").click(function(){
+                window.location.href="/";
+                return false;
+            });
+    
+        });
+    </script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <center>
+            
+            <legend><h2>Edit <%= otter.name%>'s Info</h2></legend>
+            <form action="/otters/<%- otter.id %>" class="otterForm" id="adder" method="POST">
+            
+                <label for="name" class="label">Name:</label>
+                <input type="text" class="inpt" name="name" value="<%- otter.name %>">
+                <br>
+                <label for="food" class="label">Favorite Food:</label>
+                <input type="text" class="inpt" name="food" value="<%- otter.food %>">
+                <br>
+                <label for="game">Favorite Game</label>
+                <input type="text" class="inpt" name="game" value="<%- otter.game %>">
+                <br>
+                <label for="member" class="label">Favorite Family Member:</label>
+                <select class="inpt" name="member" value="<%- otter.member %>">
+                    <% for (var member in family) { %>
+                        <% let relative = family[member] %>
+                            <option value="<%- relative.name %>" class="inpt"><%= relative.name%></option>
+                    <% } %>
+                </select>
+                <br>
+                <label for="interests" class="label" id="interestLabel" >Other Interests:</label>
+                <textarea name="interests" form="adder" cols="50" rows="4" class="inpt" ><%= otter.interests %></textarea>
+                <br>
+                <input type="submit" class="inpt" id="submit" value="Update Otter">
+
+            </form>
+            <div class="flasher">
+                <% if (messages.addOtter) { %>
+                    <% for (var e of messages.addOtter) { %>
+                        <h3><%= e %></h3>
+                    <% } %>
+                <% } %>
+            </div>
+        </center>
+        
+        <div id="navigations">
+            <center>
+                <button class="bttn" id="all">All Otters</button>
+                <button class="bttn" onclick="location.href='/otters/<%- otter.id %>'">Back to Details</button>
+            </center>
+        </div>
+
+    </div>
+</body>
+</html>
