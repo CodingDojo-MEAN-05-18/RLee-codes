@@ -1,6 +1,6 @@
 const mongoose = require("mongoose"),
     Otter = mongoose.model("Otter"),
-    OtterID = mongoose.model("OtterID");
+    OtterID = mongoose.model("OtterID"),
     otters = require("../controllers/otters");
 
 
