@@ -9,6 +9,7 @@ MONGO/1955api/node_modules
 MONGO/DojoSecrets/node_modules
 MONGO/ModularizedQDojo/node_modules
 MONGO/ModularOtters/node_modules
+MONGO/RESTfulTask/node_modules
 NODE/node_server
 NODE/node_module_basics
 Resources/

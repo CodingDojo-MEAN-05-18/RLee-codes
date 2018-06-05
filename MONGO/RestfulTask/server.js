@@ -1,3 +1,4 @@
+// require express & create app
 var express = require('express');
 var app = express();
 
@@ -11,11 +12,9 @@ var path = require('path');
 var mongoose = require('mongoose');
 require("./server/config/mongoose");
 
-
-
+//require body-parser & set it to handle .json data
 var bodyParser = require('body-parser');
-// use it as .json for sending api responses.
 app.use(bodyParser.json());
 
-//require routes from routes.js in server/config/ as a function and pass in app
+
 require("./server/config/routes")(app);

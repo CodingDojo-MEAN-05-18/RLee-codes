@@ -1,0 +1,143 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Task API",
+		"_postman_id": "204cf1c5-b6cb-f774-1601-07b89bb0e785",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8000/",
+			"request": {
+				"url": "localhost:8000/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Serves a list of all Tasks"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/new/:name/:description",
+			"request": {
+				"url": {
+					"raw": "localhost:8000/new/:name/:description",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"new",
+						":name",
+						":description"
+					],
+					"query": [],
+					"variable": [
+						{
+							"key": "name",
+							"value": "Finish RestfulTask",
+							"description": "name of task"
+						},
+						{
+							"key": "description",
+							"value": "Push project to github and post link to the dojo",
+							"description": "description of task"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "This creates a task in the database."
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/show/:id",
+			"request": {
+				"url": {
+					"raw": "localhost:8000/show/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"show",
+						":id"
+					],
+					"query": [],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5b163da55be2243fbcf55196"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "This will show a single task matching the logged id.  (assuming it wasn't accidentally erased in testing.)"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/:id/update",
+			"request": {
+				"url": {
+					"raw": "localhost:8000/:id/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						":id",
+						"update"
+					],
+					"query": [],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5b163da55be2243fbcf55196",
+							"description": "unique id for the first task entered into the db "
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "This will toggle to 'completed' boolean value, and also update the 'updated_at' value."
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/:id/delete",
+			"request": {
+				"url": {
+					"raw": "localhost:8000/:id/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						":id",
+						"delete"
+					],
+					"query": [],
+					"variable": [
+						{
+							"key": "id",
+							"value": "t67ujhgyuio0987yghju7ytrf",
+							"description": "slug id.  This id will error out because it is invalid.  This is to prevent testing delete on a record which would cause other tests to fail."
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "This route deletes a task by id.  The id saved to this http request is not valid.  This is intentional and for the purpose of preventing conflicts during testing."
+			},
+			"response": []
+		}
+	]
+}
