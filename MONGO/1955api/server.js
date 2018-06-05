@@ -1,5 +1,5 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 const port = process.env.PORT || 8000;
 const server = app.listen(port, () => console.log(`listening on port ${port}`));
@@ -10,8 +10,6 @@ var path = require('path');
 //mongoose module
 var mongoose = require('mongoose');
 require("./server/config/mongoose");
-
-
 
 var bodyParser = require('body-parser');
 // use it as .json for sending api responses.

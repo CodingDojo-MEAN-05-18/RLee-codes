@@ -20,7 +20,7 @@ tasks = {
     show : (req, res) =>{
         Tasks.find({_id: req.params.id})
             .then(data => {
-                console.log("Single Task Served.", data.title);
+                console.log("Single Task Served.");
                 res.json(data);
             })
             .catch( error => {
@@ -38,7 +38,7 @@ tasks = {
 
         task.save()
             .then( data => {
-                console.log("New task saved.", data.name);
+                console.log("New task saved.", data.title);
                 res.json(data);
             })
             .catch(error =>{
