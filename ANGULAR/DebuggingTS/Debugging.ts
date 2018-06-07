@@ -1,14 +1,15 @@
 // 1. SETTING TYPES
-var myString: number;
+var myString: number|string;
 // I can assign myString like this:
 myString = "Bee stinger";
 // Why is there a problem with this? What can I do to fix this?
     //The problem is that the data type of the value being assigned does not match the previously declared type for the variable.
-    //This can be fixed by changing the declared type to 'number'.  ...which has been done above.
+    //This can be fixed by changing the declared type to 'number'.  ...which has been done above.  
+    //also added an OR to accommodate both data types.)
 myString = 9;
 
 // 2. SETTING TYPES FOR FUNCTION PARAMETERS
-function sayHello(name: number){
+function sayHello(name: number|string){
     return `Hello, ${name}!`;
  }
  // This is working great:
@@ -16,6 +17,7 @@ function sayHello(name: number){
  // Why isn't this working? I want it to return "Hello, 9!"
     //The problem is that the data type of the value being passed into the function dooes not match the previously declared type for the variable.
     //This can be fixed by changing the declared type to 'number'. ...which has been done above.
+    //also added an OR to accommodate both data types.)
  console.log(sayHello(9));
  
 //3. Optional Parameters
