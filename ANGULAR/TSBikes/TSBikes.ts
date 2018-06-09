@@ -26,9 +26,9 @@ class Bike {
 }
 
 //create bike instances
-bike1 = new Bike(200, "25mph")
-bike2 = new Bike(350, "30mph")
-bike3 = new Bike(375, "33mph")
+var bike1 = new Bike(200, "25mph")
+var bike2 = new Bike(350, "30mph")
+var bike3 = new Bike(375, "33mph")
 
 //Have the first instance ride three times, reverse once and have it displayInfo().
 bike1.ride().ride().ride().reverse().displayInfo();
