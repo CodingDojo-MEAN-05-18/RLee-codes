@@ -7,7 +7,7 @@ tasks = {
     index : function(req, res){
         Tasks.find({}).sort({created_by: 1})
             .then(data => {
-                console.log("Task list served.");
+                // console.log("Task list served.");
                 res.json(data);
             })
             .catch(error => {
@@ -72,7 +72,7 @@ tasks = {
                 console.log("There was a problem finding the Task to update.");
                 res.json(error);
             });
-        
+
     },
 
     //delete a task, by id
@@ -80,7 +80,7 @@ tasks = {
         Tasks.remove({_id : req.params.id})
             .then( data => {
                 console.log("Task was successfully deleted.");
-                let response = { 
+                let response = {
                     Task : req.params.id,
                     status : "Deleted",
                 };
