@@ -6,4 +6,8 @@ module.exports = (app) => {
         pokemon.index(req, res);
     });
 
+    app.get("/pokemon/:id", (req, res) => {
+        pokemon.oneMon(req, res);
+    });
+
 };

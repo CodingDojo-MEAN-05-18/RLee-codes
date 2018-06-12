@@ -11,10 +11,11 @@ var path = require('path');
 
 var bodyParser = require('body-parser');
 // use it!
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
 
-// static content
-app.use(express.static(path.join(__dirname, './static')));
+// static content (angular version)
+app.use(express.static(path.join(__dirname, './PokeApp/dist/PoekApp')));
 
 // require routes from config/routes
 require("./server/config/routes")(app);
