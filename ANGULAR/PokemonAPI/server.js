@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(bodyParser.json());
 
 // static content (angular version)
-app.use(express.static(path.join(__dirname, './PokeApp/dist/PoekApp')));
+app.use(express.static(path.join(__dirname + './PokeApp/dist/PokeApp')));
 
 // require routes from config/routes
 require("./server/config/routes")(app);

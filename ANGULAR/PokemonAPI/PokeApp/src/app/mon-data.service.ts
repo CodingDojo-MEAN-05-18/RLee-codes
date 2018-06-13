@@ -12,8 +12,8 @@ export class MonDataService {
   }
 
   getIndex() {
-    const obsIndex = this._http.get('/');
-    obsIndex.subscribe(data => console.log('logged from MonDataService'));
+    const obsIndex = this._http.get('localhost:8000/pokemon');
+    obsIndex.subscribe(data => console.log('logged from MonDataService', data));
   }
 
 }
