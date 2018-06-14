@@ -1,0 +1,26 @@
+body{
+    background-color: darkblue;
+    margin: 30px;
+    padding: 10px;
+}
+.wrapper{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px lime;
+    padding: 0px 15px 0px 15px;
+    width: 768px;
+    background-color: black;
+    color: white;
+}
+.adjust{
+    margin: 0px, 0px, 15px, 15px;
+}
+th{
+    font-weight: bold;
+    color: lime;
+}
+td{
+    padding: 5px;
+}

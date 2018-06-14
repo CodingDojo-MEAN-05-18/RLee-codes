@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<body>
+  <div class="wrapper">
+    <h1>Dojo Mail</h1>
+    
+    <div>
+        <!-- not sure why the table resist being re-positioned.
+           I tried several methods, none of which worked. -->
+      <table [ngClass]="{'adjust': true}">  
+        <th>Email</th>
+        <th>Importance</th>
+        <th>Subject</th>
+        <th>Content</th>
+
+        <tr *ngFor="let email of emailData">
+          <td>{{email.address | lowercase}}</td>
+          <td *ngIf='email.importance'>High</td>
+          <td *ngIf='!email.importance'>Low</td>
+          <td>{{email.subject | uppercase}}</td>
+          <td>{{email.content}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
