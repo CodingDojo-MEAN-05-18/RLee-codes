@@ -1,0 +1,11 @@
+*{
+  margin: opx;
+  padding: 0px;
+}
+form{
+margin: 30px;
+}
+.queued{
+  display: inline-block;
+  border: solid 1px black;
+}

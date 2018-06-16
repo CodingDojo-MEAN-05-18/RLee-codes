@@ -1,0 +1,37 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<div>
+  <h2 [ngStyle]="{
+    'margin-left': '60px',
+    'color': 'red'
+  }">
+    Your Barcode</h2>
+</div>
+
+
+
+<div *ngFor="let num of barNums"
+  [ngStyle]="{
+    'height': '50px',
+    'width': '50px',
+    'background-color': colors[colorcode.makeColor()]
+  }"
+  [ngClass]="{
+    'queued': true
+  }"
+></div>
+
+<!-- [ngStyle]= "{
+  'height': '50px',
+  'width':  '50px'
+  'background-color': 'red'
+}">what now? -->
+
+
+
+

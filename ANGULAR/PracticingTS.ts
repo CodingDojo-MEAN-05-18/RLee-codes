@@ -17,7 +17,6 @@ function printName(name: string): string {
 }
 
 class User {
-    
 
     constructor(public name : string, public age: number){}
         sayHello(name: string): void {
