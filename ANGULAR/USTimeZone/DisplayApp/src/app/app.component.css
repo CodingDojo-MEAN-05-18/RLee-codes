@@ -1,0 +1,22 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.bttn{
+  background-color: black;
+  color: red;
+  margin: 20px;
+  padding: 10px;
+  font-size: 2.0em;
+  font-family: serif;
+  border: solid 2px red;
+  border-radius: 10px;
+  box-shadow: 2px 3px gray;
+}
+.active{
+  background-color: yellow;
+  border: solid 2px black;
+}
+.hide{
+  display: none;
+}
