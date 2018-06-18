@@ -1,0 +1,35 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  background-color: darkblue;
+  color: gold;
+  /* border: solid 1px red; */
+}
+.center{
+  text-align: center;
+}
+.redBorder{
+  border: solid 2px red;
+}
+.inline{
+  display: inline-block;
+}
+.switch{
+  margin: 10px;
+  height: 40px;
+  width: 40px;
+  border: solid 10px brown;
+}
+.on{
+  background-color: green;
+  color: white;
+  height: 40px;
+}
+.hideOn{
+  display: none;
+}
+.off{
+  background-color: red;
+  color: white;
+  height: 40px;
+}

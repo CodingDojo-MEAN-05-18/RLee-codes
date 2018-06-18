@@ -1,0 +1,54 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div [ngClass]="{
+  'center': true
+}">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+  <section>
+    <fieldset>
+      <legend>How Many Switches on your board?</legend>
+      <form (submit)='onSubmit($event)'>
+        <label>Number: </label>
+        <input type='number' name='number' [(ngModel)]='length'>
+        <button>Generate</button>
+      </form>
+    </fieldset>
+  </section>
+</div>
+
+<div [ngClass]="{
+    'center': true,
+    'redBorder': true
+  }">
+<h1>{{error}}</h1>
+  <div *ngFor='let number of boardKeys'
+    [ngClass]="{
+      ' inline ': true,
+      'center ': true
+    }">
+
+    <div (click)="onSwitchFlip(number)"
+    [ngClass]="{
+      'switch': true
+    }">
+      <div [ngClass]="{
+        'on': true,
+        'hideOn': !board[number]
+      }">
+        ON
+      </div>
+
+      <div *ngIf='!board[number]'
+      [ngClass]="{
+        'off': true
+      }">
+        OFF
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
