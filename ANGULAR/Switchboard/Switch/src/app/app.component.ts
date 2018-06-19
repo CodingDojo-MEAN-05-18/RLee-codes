@@ -12,7 +12,7 @@ export class AppComponent {
   length: number;
   board = {};
   boardKeys = [];
-  error = '';
+  error= '';
 
   onSubmit(event) {
     event.preventDefault();

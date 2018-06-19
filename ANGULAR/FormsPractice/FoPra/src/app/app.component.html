@@ -1,0 +1,23 @@
+<form (submit)="onSubmit()">
+  <input type="text" name="firstName"
+    required
+    minlength="4"
+    maxlength="24"
+    [(ngModel)]="user.firstName"
+    #firstName="ngModel"
+    />
+  <br>
+
+  <br>
+  <input type="text" name="lastName" [(ngModel)]='user.lastName'>
+  <br>
+  <input type="submit">
+</form>
+<div *ngIf=firstName.errors>
+    First Name: {{ firstName.errors | json}}
+</div>
+<div *ngIf=firstName.valid>
+    First Name valid: {{ firstName.valid | json | uppercase }}
+</div>
+{{ user | json }}
+

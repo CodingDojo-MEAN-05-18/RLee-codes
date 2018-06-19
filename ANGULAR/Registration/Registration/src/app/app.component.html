@@ -1,0 +1,41 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<section>
+  <fieldset>
+    <legend>Please Enter Your Information</legend>
+    <form (submit)="onSubmit()" #formData="ngForm">
+      <label for="firstName">*First Name:</label>
+      <input type="text" name="firstName" required [(ngModel)]="user.firstName" #firstName="ngModel" />
+
+      <label for="lastName">*Last Name:</label>
+      <input type="text" name="lastName" required [(ngModel)]="user.lastName" #lastName="ngModel">
+
+      <label for="email">*Email Address:</label>
+      <input type="text" name="email" required pattern='/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/' [(ngModel)]="user.email"
+        #email="ngModel">
+
+      <label for="password">*Password:</label>
+      <input type="text" name="password" required minlength="16" [(ngModel)]="user.password" #passwordd="ngModel">
+
+      <label for="passConf">*Passoword Confirmation</label>
+      <input type="text" name="passConf" required minlength="16" [pattern]="password.value" [(ngModel)]="passConf" #passConf="ngModel">
+
+      <label for="address1">*Street Address</label>
+      <input type="text" name="address1" required [(ngModel)]="user.address1" #address1="ngModel">
+
+      <label for="address2">Unit/Apt#</label>
+      <input type="text" name="address2" required [(ngModel)]="user.address2" #address2="ngModel">
+
+      <label for="city">*City</label>
+      <input type="text" name="city" required [(ngModel)]="user.city" #city="ngModel">
+
+
+
+
+    </form>
+  </fieldset>
+</section>
