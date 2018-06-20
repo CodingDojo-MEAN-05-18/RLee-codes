@@ -3,5 +3,32 @@
   padding: 0px;
   background-color: darkslategray;
   color: white;
+  /* border: solid 1px red; */
 }
-
+.leftSpace{
+  margin-left: 80px;
+}
+.leftSmallSpace{
+  margin-left: 20px;
+}
+.right{
+  text-align: right;
+}
+.share{
+  display: inline-block;
+}
+.row{
+  margin: 5px;
+}
+select{
+  width: 175px;
+}
+.top{
+  vertical-align: top;
+}
+.red{
+  color: red;
+}
+.vertSpace{
+  margin-top: 33px;
+}

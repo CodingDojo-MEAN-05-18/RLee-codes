@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './user';
+import { States } from './states';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,16 @@ import { User } from './user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Registration App';
-
+  states = States;
   user = new User();
+
+  title = 'Registration App';
+  users = [];
 
   onSubmit() {
     console.log("form Submitted");
-    console.log(this.user);
+    this.users.push(this.user);
+    const newUser = this.users[this.users.length - 1];
   }
+
 }
