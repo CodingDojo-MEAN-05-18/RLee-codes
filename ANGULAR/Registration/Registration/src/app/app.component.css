@@ -32,3 +32,10 @@ select{
 .vertSpace{
   margin-top: 33px;
 }
+.success{
+  text-align: center;
+  margin: 10px;
+  background-color: lightgreen;
+  border: solid 3px green;
+  
+}

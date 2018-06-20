@@ -4,7 +4,13 @@
   </h1>
 </div>
 
-
+<div *ngIf="newUser" [ngClass]="{success:true}">
+  Thank you for registering with us {{newUser.firstName}}. We just sent you a confirmation email at {{newUser.email}}, and we
+  will send all mail to {{newUser.address1}},
+  <span *ngIf="user.address2">{{newUser.address2}} </span>{{newUser.city}},{{newUser.state}}.
+  <br>
+  <br> Have a wonderful day!
+</div>
 
 
 <section>
@@ -100,6 +106,8 @@
 
     <!-- form elements above here -->
     <!-- Validations errors reporting below here. -->
+    <!-- STILL NEED TO FIND A WAY TO PREVENT ERRORS FROM APPEARING ON FORM SUBMIT -->
+    <!-- probably there is a way to reset the ndModel -->
 
     <div [ngClass]="{
       'leftSmallSpace': true,
@@ -107,19 +115,19 @@
       'right': true,
       'share': true
     }">
-    <div [ngClass]="{
+      <div [ngClass]="{
       'vertSpace': true
     }"></div>
 
       <div [ngClass]="{'row': true}">
         <p *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="red">
-            First Name is required.
+          First Name is required.
         </p>
       </div>
 
       <div [ngClass]="{'row': true}">
         <p *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="red">
-            Last Name is required.
+          Last Name is required.
         </p>
       </div>
 

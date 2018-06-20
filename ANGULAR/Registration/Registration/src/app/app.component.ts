@@ -12,12 +12,12 @@ export class AppComponent {
   user = new User();
 
   title = 'Registration App';
-  users = [];
+  newUser: Object;
 
   onSubmit() {
     console.log("form Submitted");
-    this.users.push(this.user);
-    const newUser = this.users[this.users.length - 1];
+    this.newUser = this.user;
+    this.user = new User();
   }
-
+  // STILL NEED TO FIND A WAY TO PREVENT ALL ERROR MESSAGES FROM APPEARING WHEN FORM IS SUBMITTED
 }
