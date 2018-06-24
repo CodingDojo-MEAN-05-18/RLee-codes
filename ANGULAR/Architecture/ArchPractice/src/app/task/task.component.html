@@ -1,0 +1,7 @@
+<h3>Task Component</h3>
+{{tasks | json}}
+<p>...</p>
+
+<app-task-list [myTasks] ="tasks" (myEvent)="invoke($event)"></app-task-list>
+
+<app-task-new></app-task-new>
