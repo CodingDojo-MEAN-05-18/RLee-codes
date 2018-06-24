@@ -3,9 +3,7 @@
     <legend>
       <span [ngStyle]="{'font-weight': 'bold'}">PowerComponent</span>
     </legend>
-    <form (submit)="onSubmitPower($event)"
-      #powerForm="ngForm"
-      [ngStyle]="{
+    <form (submit)="onSubmitPower($event)" #powerForm="ngForm" [ngStyle]="{
         'display': 'inline-block',
         'vertical-align': 'top',
         'margin-top': '40px'}">
@@ -21,9 +19,8 @@
     <img [ngStyle]="{
       'width': '200px',
       'margin-left': '200px'
-  }" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvUHbb8MT0vcd433I1gipUzbVatas2dOSL_R4u5sUcTupWkx2c" alt="Goku">
+  }" src='./assets/goku.jpg' alt="Goku">
     <div id="levelsHolder">
-
       <div id="topRow">
         <!-- Add the line below as a condtional to the power levels once styling is complete. -->
         <!-- *ngIf="(power > 0 && power < 101)" -->
