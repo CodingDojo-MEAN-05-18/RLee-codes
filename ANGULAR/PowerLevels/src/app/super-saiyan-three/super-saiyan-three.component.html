@@ -1,0 +1,11 @@
+<div class="rank">
+  <fieldset>
+    <legend>SuperSaiyanThreeComponent</legend>
+    <p>Power Level:
+      <span *ngIf="(saiyanThree)" [ngStyle]="{'font-weight': 'bold' }">{{saiyanThree}}</span>
+    </p>
+
+    <h2 *ngIf="(saiyanThree > 9000 && saiyanThree <= 20000)">Over 9000!</h2>
+    <h2 *ngIf="saiyanThree > 20000">"Superlative Powers!"</h2>
+  </fieldset>
+</div>

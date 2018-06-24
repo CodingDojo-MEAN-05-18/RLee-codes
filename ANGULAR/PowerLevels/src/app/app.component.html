@@ -1,0 +1,45 @@
+<section>
+  <fieldset>
+    <legend>
+      <span [ngStyle]="{'font-weight': 'bold'}">PowerComponent</span>
+    </legend>
+    <form (submit)="onSubmitPower($event)"
+      #powerForm="ngForm"
+      [ngStyle]="{
+        'display': 'inline-block',
+        'vertical-align': 'top',
+        'margin-top': '40px'}">
+
+      <label for="power">
+        <span [ngStyle]="{'font-size': '1.5em'}">Initial Power Level</span>
+      </label>
+      <input type="number" required minimum='1' max='100' name="power" placeholder="1-100" [(ngModel)]='power' #powers="ngModel">
+      <button *ngIf="powerForm.valid">Calculate Powers</button>
+      <p *ngIf="powers.invalid && (powers.dirty || powers.touched)">A value 1-100 is required to proceed.</p>
+    </form>
+
+    <img [ngStyle]="{
+      'width': '200px',
+      'margin-left': '200px'
+  }" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvUHbb8MT0vcd433I1gipUzbVatas2dOSL_R4u5sUcTupWkx2c" alt="Goku">
+    <div id="levelsHolder">
+
+      <div id="topRow">
+        <!-- Add the line below as a condtional to the power levels once styling is complete. -->
+        <!-- *ngIf="(power > 0 && power < 101)" -->
+        <app-human [powerLevel]='powerLevel'></app-human>
+        <app-saiyan [powerLevel]='powerLevel'></app-saiyan>
+        <app-super-saiyan [powerLevel]='powerLevel'></app-super-saiyan>
+      </div>
+      <div id="bottomRow">
+        <app-super-saiyan-two [powerLevel]='powerLevel'></app-super-saiyan-two>
+        <app-super-saiyan-three [powerLevel]='powerLevel'></app-super-saiyan-three>
+        <app-super-saiyan-four [powerLevel]='powerLevel'></app-super-saiyan-four>
+      </div>
+
+
+    </div>
+
+
+  </fieldset>
+</section>
