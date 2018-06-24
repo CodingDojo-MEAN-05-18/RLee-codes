@@ -1,0 +1,9 @@
+.alpha{
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
+  height: 300px;
+  width: 42%;
+  border: solid 2px darkblue;
+  padding: 15px;
+}

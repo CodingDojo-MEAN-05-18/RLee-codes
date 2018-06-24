@@ -1,0 +1,8 @@
+.gamma{
+  display: inline-block;
+  margin: 10px;
+  height: 66%;
+  width: 365px;
+  border: solid 2px grey;
+  padding: 0px 10px 10px 10px;
+}
