@@ -1,0 +1,12 @@
+body{
+  width: 930px;
+  padding: 20px;
+}
+input, textarea{
+  margin-bottom: 10px;
+}
+.addQuoteBox{
+  display: inline-block;
+  text-align: right;
+  
+}

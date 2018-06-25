@@ -1,0 +1,39 @@
+<h1>Quotes List</h1>
+
+<div *ngFor='let statement of quotes'>
+
+  <div [ngStyle]=
+    "{'border': 'solid 2px red',
+    'padding': '10px'}">
+    <div [ngClass]="{'quoteHolder': true}">
+      <p [ngClass]="{'context': true}">
+        {{statement.content | json}}
+      </p>
+      <p [ngClass]="{'context': true}">
+<!-- required custome pipe is applied (removes ""'s and adds a - to the front of the name-->
+<!-- ...also capitalizes all but the first character of the author's name (for practice only: not required) -->
+      {{statement.author | authorize}}</p>
+    </div>
+
+    <div [ngClass]="{'buttonHolder': true}">
+
+      <div [ngClass]="{'inlineB': true}">
+        <p [ngClass]="{'votes': true}">{{statement.votes}}</p>
+      </div>
+
+      <div [ngClass]="{'inlineB': true}">
+        <button [ngClass]="{'buttonStyle': true,
+          'green': true}">Vote Up</button><br>
+
+        <button [ngClass]="{'buttonStyle': true,
+          'red':true}">Vote Down</button><br>
+
+        <button [ngClass]="{'buttonStyle': true,
+          'black': true}">Delete</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

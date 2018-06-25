@@ -1,0 +1,40 @@
+.context{
+  margin: 0px;
+}
+.quoteHolder{
+  display: inline-block;
+  width: 600px;
+  vertical-align: top;
+}
+.inlineB{
+  display: inline-block;
+  vertical-align: top;
+}
+.buttonHolder{
+  display: inline-block;
+  width: 300px;
+  text-align: right;
+}
+.buttonStyle{
+  width: 150px;
+  margin: 5px;
+  padding: 5px;
+  font-weight: bold;
+  box-shadow: 3px 3px #888888;
+}
+.green{
+  background-color: lightgreen;
+  color: green;
+}
+.red{
+  background-color: lightcoral;
+  color: red;
+}
+.black{
+  background-color: black;
+  color: white;
+}
+.votes{
+  font-size: 4em;
+  margin: 20px;
+}
