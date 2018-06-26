@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, OnChanges } from '@angular/core';
-import { Quote } from '@angular/compiler';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Quote } from '../quote';
 
 @Component({
   selector: 'app-quote-list',
@@ -10,13 +10,22 @@ export class QuoteListComponent implements OnInit, OnChanges {
 
   @Input() public quotes: Array<Quote>;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngOnChanges() {}
+
+  voteUp(statement: Quote) {
+    statement.votes++;
+    console.log(statement.votes);
   }
 
-  ngOnChanges() {
-    
+  voteDown(statement: Quote) {
+    statement.votes--;
   }
 
+  quoteDelete(statement: Quote) {
+    this.quotes.splice(this.quotes.indexOf(statement), 1)
+  }
 }

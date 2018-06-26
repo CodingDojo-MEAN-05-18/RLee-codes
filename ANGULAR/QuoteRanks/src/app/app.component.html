@@ -13,22 +13,32 @@
         minlength='4'
         #content="ngModel"
         [(ngModel)]="quote.content"></textarea>
-      <div *ngIf="!content.valid && (content.dirty || content.touched)">
-        Quote content is require, 4+ characters.
-      </div>
+
       <br>
 
       <label for="author">Author</label>
       <input type="text" name="author" placeholder="Enter author name." required minlength="1" #author="ngModel" [(ngModel)]='quote.author'>
-      <div *ngIf="!author.valid && (author.dirty || author.touched) ">
-        Author Name is required, 1+ characters.
-      </div>
+
       <br>
       <button [disabled]="!quoteForm.valid">Add Quote</button>
     </form>
 
   </div>
-  
+
+  <div [ngStyle]="{
+    'width': '300px',
+    'display': 'inline-block',
+    'vertical-align': 'top',
+    'margin': '10px'
+  }">
+    <div *ngIf="!content.valid && (content.dirty || content.touched)">
+      Quote content is require, 4+ characters.
+    </div>
+    <div *ngIf="!author.valid && (author.dirty || author.touched) ">
+      Author Name is required, 1+ characters.
+    </div>
+  </div>
+
   <!-- Below here is the Quote List Child Component for listing stored Quotes -->
   <div [ngClass]="{'listQuoteBox': true}">
     <app-quote-list [quotes]='quotes'></app-quote-list>
