@@ -1,3 +1,5 @@
-<p>
-  gamma works!
-</p>
+<button (click)="gammaCall()">Calculate Gamma</button>
+
+<h1 *ngIf="numberService.gamma">
+  {{numberService.gamma}}
+</h1>

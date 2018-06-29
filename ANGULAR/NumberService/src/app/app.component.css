@@ -1,5 +1,29 @@
+body{
+  width: 960px;
+  background-color: black;
+  border: solid 2px red;
+  margin: 10px;
+  padding: 10px;
+}
+#wrapper{
+  width: 780px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 15px;
+  background-color: darkblue;
+  border: solid 1px white;
+  color: white
+}
 .inline{
   display: inline-block;
   width: 200px;
   vertical-align: top;
+}
+button{
+  border: solid 1px red;
+  border-radius: 7px;
+  padding: 7px;
+  background-color: inherit;
+  color: lime;
+  font-weight: bold;
 }

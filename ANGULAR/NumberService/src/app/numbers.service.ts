@@ -9,6 +9,7 @@ export class NumbersService {
 
   alphaArr: Array<number> = [];
   betaArr: Array<number> = [];
+  gamma: number;
 
   alphaGen(): Array<number>{
     let alpha: Array<number> = [];
@@ -31,7 +32,7 @@ export class NumbersService {
   }
 
   gammaGen(): number {
-    let gamma: number = 0;
+
     let alphaSum: number = 0;
     let betaSum: number = 0;
     for (let num of this.alphaArr) {
@@ -40,7 +41,7 @@ export class NumbersService {
     for (let num of this.betaArr) {
       betaSum += num;
     }
-    gamma = (alphaSum - betaSum);
-    return gamma;
+    this.gamma = (alphaSum - betaSum);
+    return this.gamma;
   }
 }
