@@ -1,0 +1,7 @@
+<h5>Alpha Component</h5>
+
+<form (submit)="onSubmit($event, taskForm)" #taskForm='ngForm'>
+  <input type="text" name="item" [(ngModel)]="item">
+  <input type="submit" value="Submit">
+
+</form>
