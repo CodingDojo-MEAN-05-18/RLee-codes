@@ -1,0 +1,10 @@
+<div class="logHolder">
+  <p *ngFor="let action of goldService.actions">
+    <span *ngIf="action.amount >= 0" class="green">
+      You've earned {{action.amount}} gold in the {{action.where}}.
+    </span>
+    <span *ngIf="action.amount < 0"  class="red">
+      You lost {{action.amount | absval}} gold in the {{action.where}}.
+    </span>
+  </p>
+</div>

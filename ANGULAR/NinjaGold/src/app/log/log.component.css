@@ -1,0 +1,13 @@
+.logHolder{
+  border: solid 2px blue;
+  padding: 10px;
+  font-weight: bold;
+  height: 400px;
+  overflow: scroll;
+}
+.red{
+  color: red;
+}
+.green{
+  color: lime;
+}

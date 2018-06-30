@@ -1,0 +1,19 @@
+body{
+  width: 980px;
+  padding: 20px;
+  background-color: black;
+}
+.wrapper{
+  background-color: green;
+  margin: 20px;
+  padding: 10px;
+  border: solid 3px blue;
+  color: white;
+}
+.countHolder{
+  margin: 12px;
+  padding: 10px;
+  border: solid 2px blue;
+  width: 300px;
+}
+
