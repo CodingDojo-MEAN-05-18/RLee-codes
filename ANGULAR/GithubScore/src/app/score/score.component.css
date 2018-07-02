@@ -1,0 +1,9 @@
+.half{
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+  text-align: left;
+}
+.midFont{
+  font-size: 1.5em;
+}

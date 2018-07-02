@@ -1,0 +1,28 @@
+<div class='left half'>
+<h1>GitHub Score</h1>
+
+<form (submit)="OnSubmit($event, gitForm)" #gitForm="ngForm">
+
+  <label for="gitName">
+    <span class='midFont'>Github Username: </span>
+  </label>
+
+  <input type="text" name="gitName" placeholder="github_username" required [(ngModel)]='gitName'>
+
+  <input type="submit" [disabled]="!gitForm.valid" value="Calculate my Github Score">
+
+
+
+</form>
+</div>
+
+<div class="left half">
+  <h1>Your Score: <span *ngIf="score > -1d">{{score}}</span></h1>
+  <h2 *ngIf="this.comment" [ngStyle]="{'color': color, 'margin-left': '20px'}">{{comment}}</h2>
+</div>
+
+<div>
+  <h2 *ngIf="found == false">
+    The username you entered was not found.  Please try another.
+  </h2>
+</div>
