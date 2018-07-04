@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ScoreService } from '../score.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-score',
@@ -12,7 +13,7 @@ export class ScoreComponent implements OnInit {
   constructor(private scoreService: ScoreService) { }
 
   gitName: string;
-  user: object;
+  user: User;
   score: number;
   comment: string;
   found: boolean;
@@ -25,7 +26,11 @@ export class ScoreComponent implements OnInit {
       .subscribe(
       success => {
         this.found = true;
-        this.user = success;
+        this.user = new User(
+          success['alias'],
+          success['followers'],
+          success['public_repos']
+        );
         console.log(this.user);
         this.setComment();
       },
@@ -33,11 +38,10 @@ export class ScoreComponent implements OnInit {
       error => {
         console.log('Error retrieving user.', error.error['message'])
         this.score = null;
-        this.found = false;
         this.user = null;
         this.comment = null;
-      }
-      );
+        this.found = false;
+      });
     form.reset();
   }
 
