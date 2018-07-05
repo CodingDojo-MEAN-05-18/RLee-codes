@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-
+import { BehaviorSubject} from 'rxjs'
 @Injectable({
   providedIn: 'root'
 })
 export class GoldService {
-
   constructor() { }
 
-  actions: Array<Object> = [];
-  gold: number = 0;
   amount: number;
 
-  collect(location): void {
+  actions: Array<Object> = [];
+  gold$: BehaviorSubject<number> = new BehaviorSubject(this.amount);
+
+  collect(location): BehaviorSubject<number> {
     if (location == 'house') {
       this.amount = Math.floor(Math.random() * 8) + 7
     } else if (location == 'farm') {
@@ -25,12 +25,11 @@ export class GoldService {
         this.amount *= -1;
       }
     }
-    this.gold += this.amount;
     this.actions.push({
       'where': location,
       'amount': this.amount
     })
-
+    return this.gold$
   }
 
 

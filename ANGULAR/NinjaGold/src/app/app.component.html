@@ -3,11 +3,11 @@
   <div class="wrapper">
     <div class='countHolder'>
       <h1>
-        Gold Count: <span>{{goldService.gold}}</span>
+        Gold Count: <span>{{money}}</span>
       </h1>
     </div>
 
-    <app-locations></app-locations>
+    <app-locations (goldEvent)='setMoney($event)'></app-locations>
     <app-log></app-log>
 
   </div>

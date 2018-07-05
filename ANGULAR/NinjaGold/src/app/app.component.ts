@@ -10,5 +10,14 @@ import { GoldService } from './gold.service';
 export class AppComponent {
   title = 'NinjaGold';
 
+  public money: number = 0;
+
   constructor(private goldService: GoldService) { }
+
+  public setMoney(money) {
+
+    console.log('setMoney Triggered', money);
+    this.money = money;
+  }
 }
+
