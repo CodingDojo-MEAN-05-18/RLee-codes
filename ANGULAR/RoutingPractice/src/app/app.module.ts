@@ -7,6 +7,7 @@ import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { HomeTasksComponent } from './home-tasks/home-tasks.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     LandingComponent,
     HomeComponent,
     HomeTasksComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
