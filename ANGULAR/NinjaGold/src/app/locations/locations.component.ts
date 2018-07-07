@@ -17,9 +17,9 @@ export class LocationsComponent implements OnInit {
   OnClick(location) {
     console.log(location, "clicked");
     this.goldService.collect(location);
-    this.gold += this.goldService.amount;
+    // this.gold += this.goldService.amount;
     console.log(this.gold, this.goldService.amount);
-    this.goldEvent.emit(this.gold);
+    // this.goldEvent.emit(this.gold);
   }
 
   constructor(private goldService: GoldService) { }

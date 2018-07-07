@@ -14,6 +14,10 @@ export class AppComponent {
 
   constructor(private goldService: GoldService) { }
 
+  ngOnInit() {
+    this.goldService.gold$.subscribe(flux => this.money += flux)
+  }
+
   public setMoney(money) {
 
     console.log('setMoney Triggered', money);

@@ -6,7 +6,7 @@ import { BehaviorSubject} from 'rxjs'
 export class GoldService {
   constructor() { }
 
-  amount: number;
+  amount: number = 0;
 
   actions: Array<Object> = [];
   gold$: BehaviorSubject<number> = new BehaviorSubject(this.amount);
@@ -29,7 +29,7 @@ export class GoldService {
       'where': location,
       'amount': this.amount
     })
-    return this.gold$
+    this.gold$.next(this.amount)  //needs modification
   }
 
 
