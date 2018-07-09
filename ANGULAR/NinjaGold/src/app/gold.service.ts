@@ -29,7 +29,9 @@ export class GoldService {
       'where': location,
       'amount': this.amount
     })
-    this.gold$.next(this.amount)  //needs modification
+    this.gold$.next(this.amount)  //.next updates the service's streamed value
+
+    return; 
   }
 
 

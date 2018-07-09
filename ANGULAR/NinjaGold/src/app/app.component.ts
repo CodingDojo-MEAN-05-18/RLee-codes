@@ -19,7 +19,6 @@ export class AppComponent {
   }
 
   public setMoney(money) {
-
     console.log('setMoney Triggered', money);
     this.money = money;
   }
