@@ -7,24 +7,13 @@ import { AppComponent } from './app.component';
 
 import { WeatherServiceService } from './weather-service.service';
 
-import { SeattleComponent } from './seattle/seattle.component';
-import { SanjoseComponent } from './sanjose/sanjose.component';
-import { BurbankComponent } from './burbank/burbank.component';
-import { DallasComponent } from './dallas/dallas.component';
-import { DcComponent } from './dc/dc.component';
-import { ChicagoComponent } from './chicago/chicago.component';
-
+import * as fromRoutes from './routes'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SeattleComponent,
-    SanjoseComponent,
-    BurbankComponent,
-    DallasComponent,
-    DcComponent,
-    ChicagoComponent
+  ...fromRoutes.components
   ],
   imports: [
     BrowserModule,

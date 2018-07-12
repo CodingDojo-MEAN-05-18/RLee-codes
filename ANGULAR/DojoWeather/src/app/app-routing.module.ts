@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import * as fromIndex from './index';
+import * as fromIndex from './routes/index';
 
 
 

@@ -1,11 +1,19 @@
-<p>
-  seattle works!
-</p>
-
-{{reportData | json}}
+<div class="wrapper">
+<h1>Seattle, WA</h1>
+<span class="bold"></span>
 <br>
 <br>
+<div class="half left">
+Current Temperature: <span class="bold">{{currentTemp}}</span> <br>
+High Temperature: <span class="bold">{{hiTemp}}</span><br>
+Low Temperature: <span class="bold">{{loTemp}}</span><br>
+Humidity: <span class="bold">{{humidity}}</span><br>
+Description: <span class="bold">{{status}}</span><br>
+</div>
+<div class="half right">
+  <div class="imgHolder">
+    <img src='./assets/static/seattle.jpeg' alt="seattle">
+  </div>
+</div>
+</div><!-- closes wrapper -->
 
-Temperature {{temp}} <br>
-
-{{weather["weather"] | json}}

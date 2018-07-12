@@ -10,4 +10,17 @@
   font-size: 1.3em;
   font-weight: bold;
 }
-
+.half{
+  display: inline-block;
+  width: 400px;
+  margin-bottom: 30px;
+}
+.imgHolder{
+  width: 300px;
+}
+img{
+  width: 100%;
+}
+.bold{
+  font-weight: bold;
+}
