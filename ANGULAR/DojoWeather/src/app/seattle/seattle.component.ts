@@ -1,16 +1,17 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeatherServiceService } from '../weather-service.service';
+import { WeatherReport } from '../weatherReport';
 
 @Component({
   selector: 'app-seattle',
   templateUrl: './seattle.component.html',
   styleUrls: ['./seattle.component.css','../app.component.css']
 })
-export class SeattleComponent implements OnInit, OnChanges {
+export class SeattleComponent implements OnInit {
 
   private location: string = "seattle";
 
-  report: object;
+  report: WeatherReport;
 
   currentTemp: number;
   hiTemp: number;
@@ -19,22 +20,25 @@ export class SeattleComponent implements OnInit, OnChanges {
   status: string;
 
 
-  constructor(private weatherService: WeatherServiceService) {
-    this.weatherService.retrieveWeather(this.location);
-  }
+  constructor(private weatherService: WeatherServiceService){ }
 
-
-//probably there were D.R.Y.er ways to manage this... like keeping these varables in the WeatherService or creating a class and passing it up from the WeatherService, but my goal in using this method was to practice with Observables.
+//probably there were D.R.Y.er ways to manage this... like keeping these varables in the WeatherService or creating a class and passing it up from the WeatherService...
   ngOnInit() {
-    this.weatherService.report.subscribe(data => {
-      this.report = data;
-      this.currentTemp = this.weatherService.toFarenheit(this.report.main.temp);
-      this.hiTemp = this.weatherService.toFarenheit(this.report.main.temp_max);
-      this.loTemp = this.weatherService.toFarenheit(this.report.main.temp_min);
-      this.humidity = this.report.main.humidity;
-      this.status = this.report.weather[0].description;
-    });
-    //also worth noting that tslint does Not like my accessing properties that aren't explicitly described on the object, this.report.
+    this.weatherService.retrieveWeather(this.location)
+      .subscribe(data => {
+        console.log(data);
+        let { main, weather } = data;
+        this.currentTemp = this.weatherService.toFarenheit(main.temp);
+        this.hiTemp = this.weatherService.toFarenheit(main.temp_max);
+        this.loTemp = this.weatherService.toFarenheit(main.temp_min);
+        this.humidity = main.humidity;
+        this.status = weather[0].description;
+//for some reason the new WeatherReport object is not being created even though the associated data is present.  In order to bypass this and move on with classwork, I will use a direct assignment from the component in the view.
+        this.report = new WeatherReport(this.currentTemp, this.hiTemp, this.loTemp, this.humidity, this.status)
+        console.log(this.currentTemp);
+        console.log(this.report);
+      }
+    )
   }
 
 
