@@ -1,0 +1,12 @@
+.errors{
+  display: inline-block;
+}
+.labelDiv{
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+}
+.buttonStyle{
+  margin-left: 217px;
+  
+}

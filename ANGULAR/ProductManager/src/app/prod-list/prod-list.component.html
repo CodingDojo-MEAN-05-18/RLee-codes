@@ -1,0 +1,16 @@
+
+<!-- {{ productList | json }} -->
+
+<div class="productPlate" *ngFor="let product of productList">
+
+  <img class="productImage" src={{product.imageUrl}} alt="product image">
+  <div class="data">
+    <!-- <p>{{ product.id }}</p> -->
+    <h2>{{ product.title }}</h2>
+    <p>${{ product.price }}</p>
+  </div>
+  <div class="buttons">
+    <button class="edit control">Edit</button>
+    <button class="delete control">Delete</button>
+  </div>
+</div>

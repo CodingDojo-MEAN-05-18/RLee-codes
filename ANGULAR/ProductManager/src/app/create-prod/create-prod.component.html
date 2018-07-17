@@ -1,0 +1,47 @@
+<h2>Create a New Product</h2>
+
+{{product | json}}
+<form (submit)="onSubmit($event, prodForm)"
+  name="prodForm"
+  #prodForm="ngForm"
+>
+  <div class="labelDiv">
+    <label for="title">
+      <span class="label">Product Title</span>
+    </label>
+  </div>
+  <input type="text" name="title"
+    required
+    minlength="4"
+    [(ngModel)]="product.title"
+    #title="ngModel">
+    <div class="errors" *ngIf='title.errors'>
+      {{title.errors | json}}
+    </div>
+  <br>
+
+  <div class="labelDiv">
+    <label for="price">
+      <span class="label">Price</span>
+    </label>
+  </div>
+  <input type="number" name="price"
+    required
+    [(ngModel)]="product.price"
+    #price="ngModel">
+    <div class="errors" *ngIf='price.errors'>
+      {{price.errors | json}}
+    </div>
+  <br>
+
+  <div class="labelDiv">
+    <label for="imageUrl">
+      <span class="label">Image Url</span>
+    </label>
+  </div>
+  <input type="text" name="imageUrl"
+  [(ngModel)]="product.imageUrl">
+  <br>
+
+  <button class="buttonStyle" [disabled]="!prodForm.valid">Create</button>
+</form>

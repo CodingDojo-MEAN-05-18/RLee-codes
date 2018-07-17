@@ -1,0 +1,41 @@
+.productPlate{
+  display: inline-block;
+  border: solid 2px blue;
+  margin: 42px;
+  width: 300px;
+}
+.productImage{
+  width: 250px;
+  height: 175px;
+  /* margin-left: auto; */
+  margin-left: 22px;
+  margin-top: 10px;
+  border: solid 2px white;
+}
+.data{
+  display: inline-block;
+  font-weight: bold;
+}
+.buttons{
+  text-align: center;
+}
+.control{
+  width: 80%;
+  margin-bottom: 10px;
+  border: solid 1px black;
+  padding: 5px;
+  box-shadow: 3px 3px black;
+  font-weight: bold;
+}
+.edit{
+  background-color: gold;
+  color: black;
+}
+.delete{
+  background-color: crimson;
+  color: white;
+}
+h2, p{
+  margin: 5px;
+  margin-left: 25px;
+}
