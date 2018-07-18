@@ -29,7 +29,7 @@ export class UpdateProdComponent implements OnInit {
   ngOnInit() {
     this.product = this.products.find(product => { return product.id.toString(10) === this.id });
     this.index = this.products.indexOf(this.product);
-  }
+  };
 
   onSubmitUpdate(event): void{
     event.preventDefault();
@@ -40,5 +40,12 @@ export class UpdateProdComponent implements OnInit {
     this.productService.updateProductData(this.products);
   //route to the product ProductListComponent
     this.router.navigate(['/products']);
+  };
+
+  onClickDelete() {
+    console.log( this.products.splice(this.index, 1), "...was deleted" );
+    this.productService.updateProductData(this.products);
+    this.router.navigate(['/products']);
   }
+
 }

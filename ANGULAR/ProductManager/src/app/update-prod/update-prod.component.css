@@ -20,3 +20,8 @@
   font-weight: bold;
   margin: 0px;
 }
+.bttnPosition{
+  position: relative;
+    left: 100px;
+    bottom: 21px;
+}

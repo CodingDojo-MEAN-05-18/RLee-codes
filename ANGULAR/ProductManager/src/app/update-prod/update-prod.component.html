@@ -1,8 +1,9 @@
-<h1>{{id}}</h1>
 
-<h2>Edit Product</h2>
 
-{{product | json}}
+<h1>Edit Product</h1>
+<h2> id#: {{id}}</h2>
+
+<!-- {{product | json}} -->
 <form (submit)="onSubmitUpdate($event, updateForm)"
   name="updateForm"
   #updateForm="ngForm"
@@ -51,3 +52,4 @@
     [ngClass]="{'green': updateForm.valid}">
     Update</button>
 </form>
+<button class="buttonStyle red bttnPosition" (click)="onClickDelete()">Delete</button>
