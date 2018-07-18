@@ -1,0 +1,22 @@
+.errors{
+  display: inline-block;
+}
+.labelDiv{
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+}
+.buttonStyle{
+  margin-left: 217px;
+}
+.green{
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+.red{
+  background-color: red;
+  color: black;
+  font-weight: bold;
+  margin: 0px;
+}

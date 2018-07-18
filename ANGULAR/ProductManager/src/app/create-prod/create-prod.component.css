@@ -8,5 +8,15 @@
 }
 .buttonStyle{
   margin-left: 217px;
-  
+}
+.green{
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+.red{
+  background-color: red;
+  color: black;
+  font-weight: bold;
+  margin: 0px;
 }

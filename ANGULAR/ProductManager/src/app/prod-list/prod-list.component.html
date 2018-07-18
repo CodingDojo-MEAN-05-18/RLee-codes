@@ -3,14 +3,14 @@
 
 <div class="productPlate" *ngFor="let product of productList">
 
-  <img class="productImage" src={{product.imageUrl}} alt="product image">
+  <img class="productImage" src="{{product.imageUrl}}" alt="product image">
   <div class="data">
     <!-- <p>{{ product.id }}</p> -->
     <h2>{{ product.title }}</h2>
-    <p>${{ product.price }}</p>
+    <p>{{ product.price | currency}}</p>
   </div>
   <div class="buttons">
-    <button class="edit control">Edit</button>
-    <button class="delete control">Delete</button>
+    <button class="edit control" (click)="onClickUpdate(product.id)">Edit</button>
+    <button class="delete control" (click)="onClickDelete(product.id)">Delete</button>
   </div>
 </div>

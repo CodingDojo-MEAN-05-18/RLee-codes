@@ -1,6 +1,6 @@
 <h2>Create a New Product</h2>
 
-{{product | json}}
+<!-- {{product | json}} -->
 <form (submit)="onSubmit($event, prodForm)"
   name="prodForm"
   #prodForm="ngForm"
@@ -15,8 +15,9 @@
     minlength="4"
     [(ngModel)]="product.title"
     #title="ngModel">
-    <div class="errors" *ngIf='title.errors'>
-      {{title.errors | json}}
+    <div class="errors" *ngIf='title.errors && (title.touched || title.dirty)'>
+      <p class="red">Title is required as 4+ characters.</p>
+      <!-- {{title.errors | json}} -->
     </div>
   <br>
 
@@ -29,8 +30,9 @@
     required
     [(ngModel)]="product.price"
     #price="ngModel">
-    <div class="errors" *ngIf='price.errors'>
-      {{price.errors | json}}
+    <div class="errors" *ngIf='price.errors && (price.touched || price.dirty)'>
+      <p class="red">Price is required.</p>
+      <!-- {{price.errors | json}} -->
     </div>
   <br>
 
@@ -43,5 +45,11 @@
   [(ngModel)]="product.imageUrl">
   <br>
 
-  <button class="buttonStyle" [disabled]="!prodForm.valid">Create</button>
+  <button class="buttonStyle"
+    [disabled]="!prodForm.valid"
+    [ngClass]="{
+      'green': prodForm.valid,
+      'red': !prodForm.valid
+    }"
+  >Create</button>
 </form>

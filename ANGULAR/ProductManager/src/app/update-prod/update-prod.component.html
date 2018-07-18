@@ -1,4 +1,53 @@
 <h1>{{id}}</h1>
-<p>
-  update-prod works!
-</p>
+
+<h2>Edit Product</h2>
+
+{{product | json}}
+<form (submit)="onSubmitUpdate($event, updateForm)"
+  name="updateForm"
+  #updateForm="ngForm"
+>
+  <div class="labelDiv">
+    <label for="title">
+      <span class="label">Product Title</span>
+    </label>
+  </div>
+  <input type="text" name="title"
+    required
+    minlength="4"
+    [(ngModel)]="product.title"
+    #title="ngModel">
+    <div class="errors" *ngIf='title.errors'>
+      {{title.errors | json}}
+    </div>
+  <br>
+
+  <div class="labelDiv">
+    <label for="price">
+      <span class="label">Price</span>
+    </label>
+  </div>
+  <input type="number" name="price"
+    required
+    [(ngModel)]="product.price"
+    #price="ngModel">
+    <div class="errors" *ngIf='price.errors && (price.touched || price.dirty)'>
+        <p class="red">Price is required.</p>
+        <!-- {{price.errors | json}} -->
+    </div>
+  <br>
+
+  <div class="labelDiv">
+    <label for="imageUrl">
+      <span class="label">Image Url</span>
+    </label>
+  </div>
+  <input type="text" name="imageUrl"
+  [(ngModel)]="product.imageUrl">
+  <br>
+
+  <button class="buttonStyle"
+    [disabled]="!updateForm.valid"
+    [ngClass]="{'green': updateForm.valid}">
+    Update</button>
+</form>

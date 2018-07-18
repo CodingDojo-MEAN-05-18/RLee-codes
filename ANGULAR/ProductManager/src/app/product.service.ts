@@ -15,9 +15,9 @@ export class ProductService {
 
   constructor() { }
 
-  updateProductData(newData: any): void {
+  updateProductData(newData: Product[]): void {
     this.productData.next(newData);
-  }
+  };
 
   createProduct(title: string, price: number, imageUrl?: string): Product {
     let id = this.generateId();
@@ -26,11 +26,19 @@ export class ProductService {
     }
     const newProduct = new Product(id, title, price, imageUrl);
     return newProduct
-  }
-
+  };
 
   generateId(): number {
     let idNum = Math.floor(Math.random() * 100000) + 1;
     return idNum
-  }
+  };
+
+  deleteProduct(idNum): void {
+    for (let i = this.products.length - 1; i >= 0; i--) {
+      if (this.products[i].id === idNum) {
+        let removed = this.products.splice(i, 1);
+        console.log('removed', removed);
+      }
+    }
+  };
 }
