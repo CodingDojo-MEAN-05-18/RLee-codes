@@ -18,8 +18,9 @@
     minlength="4"
     [(ngModel)]="product.title"
     #title="ngModel">
-    <div class="errors" *ngIf='title.errors'>
-      {{title.errors | json}}
+    <div class="errors" *ngIf='title.errors && (price.touched || price.dirty)'>
+      <p class="red">Title is required as 4+ characters</p>
+      <!-- {{title.errors | json}} -->
     </div>
   <br>
 
