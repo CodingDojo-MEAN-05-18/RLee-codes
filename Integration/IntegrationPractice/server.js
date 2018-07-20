@@ -1,6 +1,6 @@
 // require express
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();  //no more 'var'
 
 const port = process.env.PORT || 8000;
 const server = app.listen(port, () => console.log(`listening on port ${port}`));
