@@ -10,7 +10,6 @@ const server = app.listen(port, () => console.log(`listening on port ${port}`));
 const path = require('path');
 app.use(express.static(path.join(__dirname, './AngulApp/dist/AngularApp')));
 
-
 // //mongoose module  //NOT NEEDED YET
 // var mongoose = require('mongoose');
 // //connect mongoose to mongoDB
@@ -32,6 +31,10 @@ app.use(bodyParser.json());
 
 module.exports = function (app) {
     app.all("*", (req, res, next) => {
-        res.sendFile(path.resolve("./AngularApp/dist/index.html"));
+        res.sendFile(path.resolve("./AngularApp/dist/AngularApp/index.html"));
     });
 };
+
+app.all("*", (req, res, next) => {
+    res.sendFile(path.resolve("./AngularApp/dist/AngularApp/index.html"));
+});
