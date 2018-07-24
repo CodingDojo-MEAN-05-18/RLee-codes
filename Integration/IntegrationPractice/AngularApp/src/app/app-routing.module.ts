@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
-    path: '/',
+    path: '',
     pathMatch: 'full',
     component: AppComponent
   },
   {
     path: '*',
-    redirectTo: '/',
+    redirectTo: '',
     pathMatch: 'full'
   },
 ];

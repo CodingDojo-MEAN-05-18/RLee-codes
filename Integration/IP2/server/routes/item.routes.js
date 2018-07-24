@@ -3,7 +3,7 @@ const { itemController } = require('../controllers');  //this is the method to u
 
 const router = require('express').Router();
 
-// items/:item_id   <--this is accomplish with barrelled routes
+// items/:item_id   <--this is accomplished with barrelled routes
 
 module.exports = router
     .get('/', itemController.index)

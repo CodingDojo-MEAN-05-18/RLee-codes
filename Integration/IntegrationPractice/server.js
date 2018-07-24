@@ -8,7 +8,7 @@ const server = app.listen(port, () => console.log(`listening on port ${port}`));
 
 // set the path such that the dist folder is used for static content.
 const path = require('path');
-app.use(express.static(path.join(__dirname, './AngulApp/dist/AngularApp')));
+app.use(express.static(path.join(__dirname, './AngularApp/dist/AngularApp')));
 
 // //mongoose module  //NOT NEEDED YET
 // var mongoose = require('mongoose');

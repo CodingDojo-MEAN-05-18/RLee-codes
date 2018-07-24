@@ -20,7 +20,10 @@ const itemSchema = new Schema({
         trim: true
     },
     
-    timestamps: true
+    timestamps: {
+        type: Date,
+        required: true
+    },
 
 });
 
